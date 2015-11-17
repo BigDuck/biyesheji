@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wpj.wx.dao.TbMenuMapper">
+    <resultMap id="BaseResultMap" type="com.wpj.wx.daomain.TbMenu">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="Menu_Id" property="menuId" jdbcType="INTEGER"/>
+        <result column="class_Name" property="className" jdbcType="VARCHAR"/>
+        <result column="theme" property="theme" jdbcType="VARCHAR"/>
+        <result column="cols" property="cols" jdbcType="INTEGER"/>
+        <result column="offCanvasFlip" property="offcanvasflip" jdbcType="TINYINT"/>
+        <result column="menu_name" property="menuName" jdbcType="VARCHAR"/>
+        <result column="html_id" property="id" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <resultMap id="AllMenuMessageMap" type="com.wpj.wx.daomain.TbMenu" extends="BaseResultMap">
+        <collection property="content" ofType="com.wpj.wx.daomain.TbMenuitem" column="munue_id">
+            <id column="menuItem_id" property="menuitemId" jdbcType="INTEGER" />
+            <result column="Link" property="link" jdbcType="VARCHAR" />
+            <result column="Menu_id" property="menuId" jdbcType="INTEGER" />
+            <result column="title" property="title" jdbcType="VARCHAR" />
+            <result column="subCols" property="subCols" jdbcType="INTEGER" />
+            <collection property="subMenu" ofType="com.wpj.wx.daomain.TbSubmenuitem" column="menuItem_id">
+                <id column="Sub_id" property="subId" jdbcType="INTEGER" />
+                <result column="Sub_link" property="link" jdbcType="VARCHAR" />
+                <result column="Sub_title" property="title" jdbcType="VARCHAR" />
+                <result column="menuItem_id" property="menuitemId" jdbcType="INTEGER" />
+                <result column="Sub_htmlName" property="className"/>
+            </collection>
+        </collection>
+    </resultMap>
+    <select id="selectAllMenuMessageById" parameterType="java.lang.Integer" resultMap="AllMenuMessageMap">
+SELECT
+menu.Menu_Id,
+menu.class_Name,
+menu.theme,
+menu.cols,
+menu.offCanvasFlip,
+menu.menu_name,
+item.menuItem_id,
+item.Link,
+item.Menu_id,
+item.title,
+item.subCols,
+subitem.Sub_id,
+subitem.Sub_link,
+subitem.Sub_title,
+subitem.menuItem_id
+from tb_menu menu
+LEFT  JOIN tb_menuitem item on item.Menu_id=menu.Menu_Id
+LEFT JOIN tb_submenuitem subitem ON item.menuItem_id=subitem.menuItem_id
+where menu.Menu_Id=#{menuId,jdbcType=INTEGER}
+
+ </select>
+
+
+</mapper>

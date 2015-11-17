@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wpj.wx.dao.TbSubmenuitemMapper" >
+  <resultMap id="BaseResultMap" type="com.wpj.wx.daomain.TbSubmenuitem" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="Sub_id" property="subId" jdbcType="INTEGER" />
+    <result column="Sub_link" property="link" jdbcType="VARCHAR" />
+    <result column="Sub_title" property="title" jdbcType="VARCHAR" />
+    <result column="menuItem_id" property="menuitemId" jdbcType="INTEGER" />
+    <result column="Sub_htmlName" property="className"/>
+  </resultMap>
+</mapper>

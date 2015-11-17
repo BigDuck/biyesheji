@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wpj.wx.dao.TbSliderMapper" >
+  <resultMap id="BaseResultMap" type="com.wpj.wx.daomain.TbSlider" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="tb_id" property="tb_id" jdbcType="INTEGER" />
+    <result column="theme" property="theme" jdbcType="VARCHAR" />
+    <result column="sliderConfig" property="sliderConfig" jdbcType="VARCHAR" />
+    <result column="className" property="classname" jdbcType="VARCHAR" />
+    <result column="html_id" property="id" jdbcType="VARCHAR" />
+  </resultMap>
+<resultMap id="AllMenuMessage" type="com.wpj.wx.daomain.TbSlider" extends="BaseResultMap">
+
+  <collection property="content" ofType="com.wpj.wx.daomain.TbSlidercontent">
+    <id column="c_id" property="id" jdbcType="INTEGER" />
+    <result column="c_link" property="link" jdbcType="VARCHAR" />
+    <result column="c_img" property="img" jdbcType="VARCHAR" />
+    <result column="c_desc" property="desc" jdbcType="VARCHAR" />
+    <result column="c_other" property="other" jdbcType="VARCHAR" />
+    <result column="c_slider_id" property="sliderId" jdbcType="INTEGER" />
+  </collection>
+</resultMap>
+
+
+
+  <select id="selectAllMenuMessageById" resultMap="AllMenuMessage" parameterType="java.lang.Integer">
+    SELECT
+    slider.tb_id,
+    slider.theme,
+    slider.sliderConfig,
+    slider.className,
+    slider.html_id,
+    con.id as c_id,
+    con.link as c_link,
+    con.img as c_img,
+    con.desc as c_desc,
+    con.other as c_other,
+    con.slider_id as c_slider_id
+    from tb_slider slider
+    LEFT  JOIN tb_slidercontent con on slider.tb_id=con.slider_id
+    where slider.tb_id=#{sliderid,jdbcType=INTEGER}
+  </select>
+</mapper>

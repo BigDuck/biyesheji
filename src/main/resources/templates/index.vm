@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:form="http://www.w3.org/1999/html" xmlns:spring="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>Test page</title>
+#include("common/css.vm")
+</head>
+<body>
+#include($tem)
+<Button onclick="test()">按钮</Button>
+例子:${temp}
+#parse(${temp})
+#include("common/js.vm")
+</body>
+</html>
