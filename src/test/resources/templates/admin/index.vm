@@ -45,7 +45,6 @@
 #parse("admin/sideTemplate.vm")
     <!-- sidebar end -->
     <!-- content start -->
-#man
 #parse($MyTemplate)
     <!-- content end -->
 </div>

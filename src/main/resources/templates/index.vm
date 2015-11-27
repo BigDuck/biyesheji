@@ -8,8 +8,8 @@
 <body>
 #include($tem)
 <Button onclick="test()">按钮</Button>
-例子:${temp}
-#parse(${temp})
+例子:${temp} gan
+#parse("admin/sideTemplate.vm")
 #include("common/js.vm")
 </body>
 </html>

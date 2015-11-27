@@ -6,6 +6,7 @@
 
 package com.wpj.wx.serviceImpl;
 
+import com.github.pagehelper.PageHelper;
 import com.wpj.wx.common.Page;
 import com.wpj.wx.dao.TbListmainMapper;
 import com.wpj.wx.daomain.TbListmain;
@@ -13,6 +14,8 @@ import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.ListMainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.util.StringUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,10 +35,28 @@ public class ListMainServiceImpl  extends BaseService<TbListmain> implements Lis
         return content;
     }
 
+    /**
+     * 根据条件分页查询
+     * @param listmain
+     * @param page
+     * @param rows
+     * @return
+     */
     @Override
-    public List<TbListmain> selectByExample(Object example) {
-        return super.selectByExample(example);
+    public List<TbListmain> selectByListmain(TbListmain listmain, int page, int rows) {
+        Example example = new Example(TbListmain.class);
+        Example.Criteria criteria = example.createCriteria();
+        if (listmain.getListId()!=null) {
+            criteria.andEqualTo("list_id",listmain.getListId());
+        }
+
+
+
+        //分页查询
+        PageHelper.startPage(page, rows);
+        return selectByExample(example);
     }
+
 
     /**
      * 自己写的分页，推荐使用PageHelper

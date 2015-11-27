@@ -27,7 +27,7 @@
             <form class="am-form">
                 <fieldset>
 
-                    <legend>网站标题信息</legend>
+                    <legend>网站标题信息:</legend>
                       ##网站名字开始
                     <div class="am-form-group">
                         <label for="web-name">网站名:</label>

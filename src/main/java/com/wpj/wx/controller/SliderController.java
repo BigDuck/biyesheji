@@ -7,12 +7,10 @@
 package com.wpj.wx.controller;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.wpj.wx.daomain.TbSlider;
 import com.wpj.wx.serviceImpl.SliderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,4 +30,11 @@ public class SliderController extends BaseController {
         map.put("slider",sliderService.findAllMenuMessageById(id));
         return super.toClient(callbackparam,map);
     }
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    public Object addHeader(@RequestBody TbSlider tbSlider,String callbackparam){
+        MyLogeer.info("传来的实体"+tbSlider);
+        return  super.toClient(callbackparam,null);
+    }
+
 }

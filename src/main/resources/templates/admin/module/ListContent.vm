@@ -1,7 +1,9 @@
 <div class="admin-content">
 
     <div class="am-cf am-padding">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">表格</strong> / <small>Table</small></div>
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">List</strong> /
+            <small>分类</small>
+        </div>
     </div>
 
     <div class="am-g">
@@ -10,8 +12,10 @@
                 <div class="am-btn-group am-btn-group-xs">
                     <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
                     <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
-                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button>
-                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
+                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核
+                    </button>
+                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除
+                    </button>
                 </div>
             </div>
         </div>
@@ -40,53 +44,128 @@
                 <table class="am-table am-table-striped am-table-hover table-main">
                     <thead>
                     <tr>
-                        <th class="table-check"><input type="checkbox" /></th>
+                        <th class="table-check"><input type="checkbox"/></th>
                         <th class="table-id">ID</th>
                         <th class="table-title">描述</th>
                         <th class="table-type">日期</th>
+                        <th class="table-bordered">分类</th>
                         <th class="table-set">操作</th>
                     </tr>
                     </thead>
                     <tbody>
-#foreach($item in $listMain)
+                        #foreach($item in $listMain.list)
 
-<tr>
-    <td><input type="checkbox" /></td>
-    <td name="id">$item.id</td>
-    <td name="desc" class="am-hide-sm-only">$item.desc</td>
-    <td name="date" class="am-hide-sm-only">$item.date</td>
-    <td>
-        <div class="am-btn-toolbar">
-            <div class="am-btn-group am-btn-group-xs">
-                <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 复制</button>
-                <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
-            </div>
-        </div>
-    </td>
-    </tr>
-#end
+                        <tr>
+                            <td><input type="checkbox"/></td>
+                            <td name="id">$item.id</td>
+                            <td name="desc" class="am-hide-sm-only">$item.desc</td>
+                            <td name="date" class="am-hide-sm-only">$date.format($item.date)</td>
+                            <td name="list_title" class="am-hide-sm-only">
+                                #foreach($listType in $listTypes)
+        #if($listType.list_id==$item.listId)
+                                    $listType.title
+                                #end
+        #end
+                            </td>
+                            <td>
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary" onclick="btn_update($item.id)"><span
+                                                class="am-icon-pencil-square-o"></span> 编辑
+                                        </button>
+                                       <button class="am-btn am-btn-default am-btn-xs am-text-secondary">
+                                           <span class="am-icon-eye"> 查看</span>
+                                       </button>
+                                        <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"
+                                                onclick="btn_delClick($item.id)"><span class="am-icon-trash-o"></span> 删除
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        #end
 
                     </tbody>
                 </table>
                 <div class="am-cf">
-                    共 15 条记录
+
+                    <span>当前页号:</span> <span>$listMain.pageNum</span>/<span>${listMain.pages}</span>
+
                     <div class="am-fr">
-                        <ul class="am-pagination">
-                            <li class="am-disabled"><a href="#">«</a></li>
-                            <li class="am-active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">»</a></li>
+
+                        <ul data-am-widget="pagination"
+                            class="am-pagination am-pagination-default"
+                                >
+                            <li class="am-pagination-first ">
+                                <a href="/admin/main/list?page=1" class="">第一页</a>
+                            </li>
+                            #if($listMain.hasPreviousPage)
+                                <li class="am-pagination-prev ">
+                                    <a href="/admin/main/list?page=$listMain.pageNum" class="">前一页</a>
+                                </li>
+                            #end
+
+                            <li class="">
+                                <a href="#" class="am-active">$listMain.pageNum</a>
+                            </li>
+                            #if($listMain.hasNextPage)
+                                #set($nextPageNum=$listMain.pageNum+1)
+                                <li class="am-pagination-next ">
+                                    <a href="#" class="">下一页$nextPageNum</a>
+                                </li>
+                            #end
+
+
+                            <li class="am-pagination-last ">
+
+                                <a href="/admin/main/list?page=$listMain.lastPage" class="">最末页</a>
+                            </li>
                         </ul>
+
+
                     </div>
                 </div>
-                <hr />
+                <hr/>
                 <p>注：.....</p>
             </form>
         </div>
 
     </div>
 </div>
+<script type="text/javascript">
+    function btn_update(listid){
+        var jsonStr={"classname":"noname","id": "one","theme": "sf","sliderConfig": "sss"};
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/sliders/add",
+            dataType: "json",
+            'contentType' : 'application/json',
+            data:JSON.stringify(jsonStr),
+            success:function(){
+                alert("00")
+            },
+            error:function(err){
+
+                alert(err);
+            }
+        });
+
+    }
+    function btn_delClick(listid)
+    {
+        layer.confirm('确定删除？', {
+            btn: ['取消','确定'] //按钮
+        }, function(){
+            layer.msg('你取消了操作', {icon: 2});
+        }, function(){
+            var index = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+            setInterval(function () {
+               layer.close(index);
+            },5000)
+//            layer.msg('准备删除', {
+//                //发送ajax请求进行删除
+//                time: 2000, //20s后自动关闭
+//            });
+        });
+    }
+</script>

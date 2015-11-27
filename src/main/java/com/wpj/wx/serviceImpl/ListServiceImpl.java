@@ -15,6 +15,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by WPJ587 on 2015/10/18.
  */
@@ -27,7 +29,16 @@ public class ListServiceImpl extends BaseService<TbList> implements ListService 
     @Override
     public TbList findALlListById(int id) {
         TbList tbList = tbListMapper.selectAllListMessage(id);
-
         return tbList;
+    }
+
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public List<TbList> findSimpleMessage() {
+        return tbListMapper.selectSimpleMessage();
     }
 }

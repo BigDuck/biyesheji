@@ -17,7 +17,15 @@ import java.util.Map;
  */
 public interface ListMainService  extends IService<TbListmain> {
     Map<String,Object>  findContentMessageById(int id);
-    List<TbListmain>  selectByExample(Object example);
+
+    /**
+     * 根据条件分页查询
+     * @param listmain
+     * @param page
+     * @param rows
+     * @return
+     */
+    List<TbListmain> selectByListmain(TbListmain listmain, int page, int rows);
     List<TbListmain>   findListMainByPage(Page page);
     int findCountNo();
 }
