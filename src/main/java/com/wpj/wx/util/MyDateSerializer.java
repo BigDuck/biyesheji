@@ -16,6 +16,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * 用于弥补json输出返回的时候无法正确格式化时间问题
+ *
+ */
 public class MyDateSerializer extends JsonSerializer<Date> {
   @Override
   public void serialize(Date value, JsonGenerator jgen, SerializerProvider provider) throws IOException, JsonProcessingException {

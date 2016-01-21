@@ -1,0 +1,128 @@
+<div class="admin-content">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf">
+            <strong class="am-text-primary am-text-lg"><a href="/admin/main/list">分类</a></strong> /
+            <small>新增文章</small>
+        </div>
+    </div>
+    <hr/>
+    <div class="am-g">
+        <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
+        </div>
+        <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+            <form method="post" action="/admin/main/list/add" class="am-form am-form-horizontal">
+            ##链接
+                <div class="am-form-group">
+                    <label for="link" class="am-u-sm-3 am-form-label">链接 /Link </label>
+
+                    <div class="am-u-sm-9">
+                        <input type="text" name="link" id="link" placeholder="文章链接/Link" readonly
+                               value="#if(${listMain.link}) ${listMain.link} #end"/>
+                        <small>点击分类栏跳转的栏目链接</small>
+                    </div>
+                </div>
+            ##样式
+                <div class="am-form-group">
+                    <label for="className" class="am-u-sm-3 am-form-label"> 样式/Style</label>
+
+                    <div class="am-u-sm-9">
+                        <input type="type" id="className" name="className" placeholder="默认不使用"
+                               value="#if(${listMain.className})${listMain.className}#end">
+                        <small>详细查看样式表</small>
+                    </div>
+                </div>
+            ##文章标题
+                <div class="am-form-group">
+                    <label for="title" class="am-u-sm-3 am-form-label"> 标题/Title</label>
+
+                    <div class="am-u-sm-9">
+                        <input type="text" id="title" name="title" placeholder="文章题目"
+                               value="#if(${listMain.title})${listMain.title}#end"
+                        >
+                        <small>详细查看样式表</small>
+                    </div>
+                </div>
+            ##文章类别
+                <div class="am-form-group">
+                    <label for="selectType" class="am-u-sm-3 am-form-label">文章类别</label>
+                    <div class="am-u-sm-9">
+                        <select name="listId" id="selectType">
+                            #foreach($msg in $listMsg)
+                                <option value="$msg.list_id">$msg.title</option>
+                            #end
+                        </select>
+                    </div>
+                </div>
+            ##文章简述
+                <div class="am-form-group">
+                    <label for="desc" class="am-u-sm-3 am-form-label">简述 / Desc</label>
+
+                    <div class="am-u-sm-9">
+                        <input type="text" name="desc" id="desc" placeholder="文章简述"
+                               value="#if(${listMain.desc}) ${listMain.desc}#end"
+                        >
+                    </div>
+                </div>
+            ##文章日期
+                <div class="am-form-group">
+                    <label for="date" class="am-u-sm-3 am-form-label">日期 / Date</label>
+
+                    <div class="am-u-sm-9">
+                        <input type="datetime" id="date" name="date" placeholder="文章日期" readonly
+                               value="$date.format($date.getDate())">
+                    </div>
+                </div>
+            ##缩略图片
+                <div class="am-form-group">
+                    <label for="thumbPhoto" class="am-u-sm-3 am-form-label">缩略图/Thumb</label>
+
+                    <div class="am-u-sm-9">
+                        <input type="file" name="img" class="am-btn am-btn-success am-radius" id="thumbPhoto"
+                               title="选择缩略图">
+                        <section data-am-widget="accordion" class="am-accordion am-accordion-gapped"
+                                 data-am-accordion='{  }'>
+                            <dl class="am-accordion-item">
+                                <dt class="am-accordion-title">
+                                    点击查看附加信息，一般留空
+                                </dt>
+                                <dd class="am-accordion-bd am-collapse am-out">
+                                    <input type="text" name="thumbAddition" id="thumbAddition"
+                                           placeholder="数据接口thumbAddition"
+                                           value="#if(${listMain.thumbAddition})${listMain.thumbAddition}#end">
+                                    <input type="text" name="mainAddition" id="mainAddition"
+                                           placeholder="数据接口mainAddition"
+                                           value="#if(${listMain.mainAddition})${listMain.mainAddition}#end">
+                                </dd>
+                            </dl>
+                    </div>
+                </div>
+            ##文章书写
+                <div class="am-form-group">
+                    <label for="contents" class="am-u-sm-3 am-form-label">简介 / Intro</label>
+
+                    <div class="am-u-sm-9">
+                       <textarea name="contents" id="contents" rows="10" cols="40">
+                           #if(!$listMain.contents)
+                               ${springMacroRequestContext.contextPath}
+                           #else
+                               $listMain.contents
+                           #end
+                       </textarea>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <div class="am-u-sm-9 am-u-sm-push-3">
+                        <button type="submit" class="am-btn am-btn-primary">提交</button>
+                        <button type="reset" class="am-btn am-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('contents', {
+        customConfig: '/ckeditor/config.js'
+    });
+</script>

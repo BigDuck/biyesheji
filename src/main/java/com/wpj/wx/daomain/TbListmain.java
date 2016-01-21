@@ -22,7 +22,7 @@ public class TbListmain {
     private String className;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date date;
-    @Column(name = "'desc'")
+    @Column(name = "`desc`")
     private String desc;
 
     private String img;
@@ -176,17 +176,18 @@ public class TbListmain {
 
     @Override
     public String toString() {
-
         return "TbListmain{" +
                 "id=" + id +
                 ", link='" + link + '\'' +
-                ", className='" + className+ '\'' +
+                ", className='" + className + '\'' +
                 ", date=" + date +
                 ", desc='" + desc + '\'' +
                 ", img='" + img + '\'' +
                 ", thumbAddition='" + thumbAddition + '\'' +
                 ", mainAddition='" + mainAddition + '\'' +
                 ", listId=" + listId +
+                ", title='" + title + '\'' +
+                ", contents='" + contents + '\'' +
                 '}';
     }
 

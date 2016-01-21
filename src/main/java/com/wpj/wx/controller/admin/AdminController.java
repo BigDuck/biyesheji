@@ -6,25 +6,18 @@
 
 package com.wpj.wx.controller.admin;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.wpj.wx.common.Page;
-import com.wpj.wx.controller.BaseController;
+import com.wpj.wx.aop.Procedure;
+import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.daomain.TbHeader;
-import com.wpj.wx.daomain.TbListmain;
 import com.wpj.wx.serviceImpl.HeaderServiceImpl;
-import com.wpj.wx.serviceImpl.ListMainServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import tk.mybatis.mapper.entity.Example;
 
 import javax.validation.Valid;
-import java.util.List;
 
 /**
  * Created by WPJ587 on 2015/10/23.
@@ -38,7 +31,8 @@ public class AdminController extends BaseController {
 
 
 
-    @RequestMapping(value = "/main/header",method = RequestMethod.GET)
+    @RequestMapping(value = {"/main/header","/main"},method = RequestMethod.GET)
+    @Procedure(description = "访问网站header操作")
     public String test (ModelMap map){
          TbHeader tbHeader= headerService.selectByKey(1);
         map.addAttribute("MyTemplate","admin/module/headerContent.vm");

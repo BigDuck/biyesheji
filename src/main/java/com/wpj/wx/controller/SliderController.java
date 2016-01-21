@@ -6,7 +6,7 @@
 
 package com.wpj.wx.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.daomain.TbSlider;
 import com.wpj.wx.serviceImpl.SliderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,3 +1,4 @@
+##用于展示listMain的列表
 <div class="admin-content">
 
     <div class="am-cf am-padding">
@@ -10,7 +11,7 @@
         <div class="am-u-sm-12 am-u-md-6">
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">
-                    <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
+                    <button type="button" onclick="listMainAdd()" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
                     <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
                     <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核
                     </button>
@@ -40,132 +41,98 @@
 
     <div class="am-g">
         <div class="am-u-sm-12">
-            <form class="am-form">
-                <table class="am-table am-table-striped am-table-hover table-main">
-                    <thead>
-                    <tr>
-                        <th class="table-check"><input type="checkbox"/></th>
-                        <th class="table-id">ID</th>
-                        <th class="table-title">描述</th>
-                        <th class="table-type">日期</th>
-                        <th class="table-bordered">分类</th>
-                        <th class="table-set">操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        #foreach($item in $listMain.list)
+            <table class="am-table am-table-striped am-table-hover table-main">
+                <thead>
+                <tr>
+                    <th class="table-check"><input type="checkbox"/></th>
+                    <th class="table-id">ID</th>
+                    <th class="table-title">描述</th>
+                    <th class="table-type">日期</th>
+                    <th class="table-bordered">分类</th>
+                    <th class="table-set">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                    #foreach($item in $listMain.list)
 
-                        <tr>
-                            <td><input type="checkbox"/></td>
-                            <td name="id">$item.id</td>
-                            <td name="desc" class="am-hide-sm-only">$item.desc</td>
-                            <td name="date" class="am-hide-sm-only">$date.format($item.date)</td>
-                            <td name="list_title" class="am-hide-sm-only">
-                                #foreach($listType in $listTypes)
+                    <tr id="row_${item.id}">
+                        <td><input type="checkbox"/></td>
+                        <td name="id">$item.id</td>
+                        <td name="desc" class="am-hide-sm-only">$item.desc</td>
+                        <td name="date" class="am-hide-sm-only">$date.format($item.date)</td>
+                        <td name="list_title" class="am-hide-sm-only">
+                            #foreach($listType in $listTypes)
         #if($listType.list_id==$item.listId)
-                                    $listType.title
-                                #end
+                                $listType.title
+                            #end
         #end
-                            </td>
-                            <td>
-                                <div class="am-btn-toolbar">
-                                    <div class="am-btn-group am-btn-group-xs">
-                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary" onclick="btn_update($item.id)"><span
-                                                class="am-icon-pencil-square-o"></span> 编辑
-                                        </button>
-                                       <button class="am-btn am-btn-default am-btn-xs am-text-secondary">
-                                           <span class="am-icon-eye"> 查看</span>
-                                       </button>
-                                        <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"
-                                                onclick="btn_delClick($item.id)"><span class="am-icon-trash-o"></span> 删除
-                                        </button>
-                                    </div>
+                        </td>
+                        <td>
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"
+                                            onclick="btn_view($item.id);"><span
+                                            class="am-icon-eye"></span> 预览
+                                    </button>
+                                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"
+                                            onclick="btn_look($item.id);">
+                                        <span    class="am-icon-pencil-square-o" > 编辑</span>
+                                    </button>
+                                    <Button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"
+                                            onclick="btn_delClick($item.id);"/>
+                                    <span class="am-icon-trash-o"></span> 删除
+                                    </Button>
                                 </div>
-                            </td>
-                        </tr>
+                            </div>
+                        </td>
+                    </tr>
+                    #end
+
+                </tbody>
+            </table>
+            <div class="am-cf">
+
+                <span>当前页号:</span> <span>$listMain.pageNum</span>/<span>${listMain.pages}</span>
+
+                <div class="am-fr">
+
+                    <ul data-am-widget="pagination"
+                        class="am-pagination am-pagination-default"
+                    >
+                        <li class="am-pagination-first ">
+                            <a href="/admin/main/list?page=1" class="">第一页</a>
+                        </li>
+                        #if($listMain.hasPreviousPage)
+                            <li class="am-pagination-prev ">
+                                <a href="/admin/main/list?page="+$listMain.pageNum-1" >上一页</a>
+                            </li>
                         #end
 
-                    </tbody>
-                </table>
-                <div class="am-cf">
-
-                    <span>当前页号:</span> <span>$listMain.pageNum</span>/<span>${listMain.pages}</span>
-
-                    <div class="am-fr">
-
-                        <ul data-am-widget="pagination"
-                            class="am-pagination am-pagination-default"
-                                >
-                            <li class="am-pagination-first ">
-                                <a href="/admin/main/list?page=1" class="">第一页</a>
+                        <li class="">
+                            <a href="#" class="am-active">$listMain.pageNum</a>
+                        </li>
+                        #if($listMain.hasNextPage)
+                            #set($nextPageNum=$listMain.pageNum+1)
+                            <li class="am-pagination-next ">
+                                <a href="${springMacroRequestContext.contextPath}/admin/main/list?page=$nextPageNum" >下一页</a>
                             </li>
-                            #if($listMain.hasPreviousPage)
-                                <li class="am-pagination-prev ">
-                                    <a href="/admin/main/list?page=$listMain.pageNum" class="">前一页</a>
-                                </li>
-                            #end
-
-                            <li class="">
-                                <a href="#" class="am-active">$listMain.pageNum</a>
-                            </li>
-                            #if($listMain.hasNextPage)
-                                #set($nextPageNum=$listMain.pageNum+1)
-                                <li class="am-pagination-next ">
-                                    <a href="#" class="">下一页$nextPageNum</a>
-                                </li>
-                            #end
+                        #end
 
 
-                            <li class="am-pagination-last ">
+                        <li class="am-pagination-last ">
+                            <a href="${springMacroRequestContext.contextPath}/admin/main/list?page=$listMain.lastPage" class="">最末页</a>
+                        </li>
+                    </ul>
 
-                                <a href="/admin/main/list?page=$listMain.lastPage" class="">最末页</a>
-                            </li>
-                        </ul>
 
-
-                    </div>
                 </div>
-                <hr/>
-                <p>注：.....</p>
+            </div>
+            <hr/>
+            <p>注：.....</p>
             </form>
         </div>
 
     </div>
 </div>
-<script type="text/javascript">
-    function btn_update(listid){
-        var jsonStr={"classname":"noname","id": "one","theme": "sf","sliderConfig": "sss"};
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:8080/sliders/add",
-            dataType: "json",
-            'contentType' : 'application/json',
-            data:JSON.stringify(jsonStr),
-            success:function(){
-                alert("00")
-            },
-            error:function(err){
-
-                alert(err);
-            }
-        });
-
-    }
-    function btn_delClick(listid)
-    {
-        layer.confirm('确定删除？', {
-            btn: ['取消','确定'] //按钮
-        }, function(){
-            layer.msg('你取消了操作', {icon: 2});
-        }, function(){
-            var index = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
-            setInterval(function () {
-               layer.close(index);
-            },5000)
-//            layer.msg('准备删除', {
-//                //发送ajax请求进行删除
-//                time: 2000, //20s后自动关闭
-//            });
-        });
-    }
+<script type="text/javascript" src="${springMacroRequestContext.contextPath}/js/project/listmain.js">
 </script>

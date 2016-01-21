@@ -18,8 +18,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/test")
 public class TestController {
+
     @RequestMapping("/test")
     public String tesxt(){
+//       TestController.class;
+//       TestController.class;
+//       TestController.class;
+//       TestController.class;
+
+        System.out.println("true = " + true);
+        test("ind");
+//       TestController.class;
+//       TestController.class;
         return "index";
+    }
+
+    /**
+     * 你好测试
+     * @param id 没关系是ID
+     */
+    public static void test(String id){
+        String a="";
     }
 }

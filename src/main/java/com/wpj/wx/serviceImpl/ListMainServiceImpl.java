@@ -30,7 +30,7 @@ public class ListMainServiceImpl  extends BaseService<TbListmain> implements Lis
     TbListmainMapper tbListmainMapper;
     @Override
     public Map<String, Object> findContentMessageById(int id) {
-        Map<String ,Object> content=new HashMap<>();
+        Map<String ,Object> content;
         content= tbListmainMapper.selectContentMapById(id);
         return content;
     }
@@ -49,8 +49,6 @@ public class ListMainServiceImpl  extends BaseService<TbListmain> implements Lis
         if (listmain.getListId()!=null) {
             criteria.andEqualTo("list_id",listmain.getListId());
         }
-
-
 
         //分页查询
         PageHelper.startPage(page, rows);

@@ -6,11 +6,10 @@
 
 package com.wpj.wx.controller;
 
+import com.wpj.wx.controller.common.BaseController;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by WPJ587 on 2015/10/22.

@@ -6,7 +6,7 @@
 
 package com.wpj.wx.controller;
 
-import com.wpj.wx.dao.TbHeaderMapper;
+import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.serviceImpl.HeaderServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,8 +24,6 @@ public class HeaderController extends BaseController {
     private Logger logger= LoggerFactory.getLogger(HeaderController.class);
     @Autowired
     HeaderServiceImpl headerServiceImp;
-    @Autowired
-    TbHeaderMapper tbHeaderMapper;
     @RequestMapping(value = "/header/{headerId}",method = RequestMethod.GET)
     @ResponseBody
     public Object getHeader(@PathVariable("headerId")int headerId,String callbackparam){

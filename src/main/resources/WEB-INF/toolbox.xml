@@ -11,6 +11,10 @@
 		<class>org.apache.velocity.tools.generic.DateTool</class>
 		<parameter name="format" value="yyyy-M-d HH:mm:ss"/>
 	</tool>
-
+		<tool>
+			<scope>request</scope>
+			<key>link</key>
+			<class>org.apache.velocity.tools.view.LinkTool</class>
+		</tool>
 </toolbox>
 

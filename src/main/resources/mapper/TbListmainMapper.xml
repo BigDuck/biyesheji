@@ -46,7 +46,7 @@
     <select id="selectListMainByPage" parameterType="com.wpj.wx.common.Page" resultMap="pageMessageMap">
         SELECT
         id ,
-        'desc',
+        `desc`,
         date
         FROM tb_listmain
          <if test="nowSize!=null and nowSize>=1 ">

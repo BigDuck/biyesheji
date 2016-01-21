@@ -6,6 +6,7 @@
 
 package com.wpj.wx.controller;
 
+import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.daomain.TbMenu;
 import com.wpj.wx.serviceImpl.MenuServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

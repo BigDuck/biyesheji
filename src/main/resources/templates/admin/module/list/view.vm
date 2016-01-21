@@ -1,0 +1,23 @@
+<div class="admin-content">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf">
+            <strong class="am-text-primary am-text-lg"><a href="/admin/main/list">列表</a></strong> /
+            <small>预览</small>
+        </div>
+    </div>
+    <div class="am-g">
+        <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
+        </div>
+        <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+            <article class="am-article">
+                <div class="am-article-hd">
+                    <h1 class="am-article-title">#if(${listMain.title})${listMain.title}#end</h1>
+                    <p class="am-article-meta">#if(${listMain.date})$date.format(${listMain.date})#end</p>
+                </div>
+                <div class="am-article-bd">
+                    <p class="am-article-lead">#if(${listMain.contents})${listMain.contents}#end</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>

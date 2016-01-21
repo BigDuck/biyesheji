@@ -14,6 +14,7 @@ import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.HeaderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -76,6 +77,7 @@ public class HeaderServiceImpl extends BaseService<TbHeader> implements HeaderSe
      */
     @Override
     @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)//自动忽略空字段
+    @Cacheable(value = "myCache",key ="#headerId")
     public Map<String, Object> findDataMapById(int headerId) {
         TbHeader tbHeader = tbHeaderMapper.selectByPrimaryKey(headerId);
         logger.info("tbHeader--->:" + tbHeader);

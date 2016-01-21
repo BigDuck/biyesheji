@@ -6,6 +6,7 @@
 
 package com.wpj.wx.controller;
 
+import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.serviceImpl.ListServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +27,7 @@ public class ListController extends BaseController {
     @RequestMapping("/list/{id}")
     public Object getAll(@PathVariable("id")int  id,String callbackparam){
         Map<String,Object> map=new HashMap<>();
-        map.put("list1",listService.findALlListById(id));
+        map.put("list1",listService.selectByKey(id));
         return super.toClient(callbackparam,map);
     }
 

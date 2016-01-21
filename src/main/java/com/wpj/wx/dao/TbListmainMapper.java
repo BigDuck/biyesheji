@@ -13,4 +13,5 @@ public interface TbListmainMapper extends MyMapper<TbListmain> {
     Map<String,Object> selectContentMapById(int id);
     int selectAllCount();
     List<TbListmain> selectListMainByPage(Page page);
+
 }
