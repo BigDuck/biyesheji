@@ -1,13 +1,13 @@
 <div class="admin-content" id="admin-content">
 
     <ol class="am-breadcrumb">
-        <li><a href="${base}/admin/main" class="am-icon-home">后台首页</a></li>
+        <li><a href="${springMacroRequestContext.contextPath}/admin/main" class="am-icon-home">后台首页</a></li>
         <li>Ip日志</li>
     </ol>
 
     <div class="am-g">
         <div class="am-u-sm-12">
-            <form class="am-form-inline" method="post" action="${springMacroRequestContext.contextPath}/admins/iplogList/">
+            <form class="am-form-inline" method="post" action="${springMacroRequestContext.contextPath}/manager/iplist">
                 <div class="am-form-group">
                     开始时间
                     <input type="text" placeholder="开始时间"  name="startTime" class="Wdate am-form-field"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
@@ -17,11 +17,10 @@
                     <input type="text" placeholder="结束时间"  name="endTime" class="Wdate am-form-field"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
                 </div>
                 <div class="am-form-group">
-                    每页行数
-                    <input type="number" placeholder="每页行数"  name="pageSize" class="am-form-field"  value="${pageSize}"/>
+                    <button class="am-btn am-btn-default am-animation-fade" type="submit">搜索</button>
+                    <button class="am-btn am-btn-danger am-animation-shake" type="reset">重置</button>
+                    <button class="am-btn am-btn-success am-animation-left-spring" type="button">实时图表</button>
                 </div>
-                <button class="am-btn am-btn-default am-animation-shake" type="submit">搜索</button>
-                <a class="am-btn am-btn-default am-animation-shake" href="${springMacroRequestContext.contextPath}/admins/iplogIpSum/">查看IP总量</a>
             </form>
         </div>
         <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
@@ -36,7 +35,6 @@
                     <th class="table-type">url</th>
                     <th class="table-author">参数</th>
                     <th class="table-date">创建时间</th>
-                    <th class="table-set" width="230px">操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -47,24 +45,52 @@
                     <td>${ip.url}</td>
                     <td>${ip.params}</td>
                     <td>$date.format($ip.createTime)</td>
-                    <td>
-                        <div class="am-btn-toolbar">
-                            <div class="am-btn-group am-btn-group-xs">
-                                <a class="am-btn am-btn-default am-btn-xs am-text-primary" onclick="ipSearch('${ip.ip}')" ><span class="am-icon-eye"></span> 查看IP地址</a>
-                            </div>
-                        </div>
-                    </td>
+
                 </tr>
                 #end
-
-
                 </tbody>
             </table>
 
 
         </div>
     </div>
+    <div class="am-cf">
 
+        <span>当前页号:</span> <span>$iplist.pageNum</span>/<span>${iplist.pages}</span>
+
+        <div class="am-fr">
+
+            <ul data-am-widget="pagination"
+                class="am-pagination am-pagination-default"
+            >
+                <li class="am-pagination-first ">
+                    <a href="${springMacroRequestContext.contextPath}/manager/iplist?page=1" class="">第一页</a>
+                </li>
+                #if($iplist.hasPreviousPage)
+                    <li class="am-pagination-prev ">
+                        <a href="${springMacroRequestContext.contextPath}/manager/iplist?page=$math.sub($iplist.pageNum,1)" >上一页</a>
+                    </li>
+                #end
+
+                <li class="">
+                    <a href="#" class="am-active">$iplist.pageNum</a>
+                </li>
+                #if($iplist.hasNextPage)
+                    #set($nextPageNum=$iplist.pageNum+1)
+                    <li class="am-pagination-next ">
+                        <a href="${springMacroRequestContext.contextPath}/manager/iplist?page=$nextPageNum" >下一页</a>
+                    </li>
+                #end
+
+
+                <li class="am-pagination-last ">
+                    <a href="${springMacroRequestContext.contextPath}/manager/iplist?page=$iplist.lastPage" class="">最末页</a>
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
 
 </div>
 <script language="javascript" type="text/javascript" src="${springMacroRequestContext.contextPath}/DatePicker/WdatePicker.js"></script>

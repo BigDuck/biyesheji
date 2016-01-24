@@ -6,6 +6,7 @@
 
 package com.wpj.wx.service;
 
+import com.wpj.wx.daomain.PageRequest;
 import com.wpj.wx.daomain.TbIplogs;
 
 import java.util.List;
@@ -14,5 +15,5 @@ import java.util.List;
  * Created by WPJ587 on 2016/1/21.
  */
 public interface IpLogService  extends IService<TbIplogs>  {
-    List<TbIplogs> selectByListmain(TbIplogs tbIplogs, int page, int rows);
+    List<TbIplogs> selectByListmain(TbIplogs tbIplogs, PageRequest pageRequest);
 }

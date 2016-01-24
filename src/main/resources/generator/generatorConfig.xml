@@ -55,7 +55,7 @@
         <!--<table tableName="%" >-->
         <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
         <!--</table>-->
-        <table tableName="tb_iplogs">
+        <table tableName="tb_system_info">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 

@@ -130,6 +130,14 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-aop</artifactId>
     </dependency>
+    <!--
+    用于获取系统信息
+    -->
+    <dependency>
+      <groupId>org.fusesource</groupId>
+      <artifactId>sigar</artifactId>
+      <version>1.6.4</version>
+    </dependency>
 
   </dependencies>
   <build>

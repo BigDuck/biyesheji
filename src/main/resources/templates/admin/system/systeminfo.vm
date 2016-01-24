@@ -1,0 +1,121 @@
+<div class="admin-content" id="admin-content">
+
+    <ol class="am-breadcrumb">
+        <li><a href="${springMacroRequestContext.contextPath}/admin/main" class="am-icon-home">后台首页</a></li>
+        <li>系统监控</li>
+    </ol>
+    <div class="am-g">
+        <div class="am-u-sm-12">
+            <form class="am-form-inline" method="post" action="${springMacroRequestContext.contextPath}/manager/system">
+                <div class="am-form-group">
+                    <input type="text" placeholder="开始日期"  name="startTime" class="Wdate am-form-field"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+                    <input type="text" placeholder="结束日期"  name="endTime" class="Wdate am-form-field"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+                </div>
+                <div class="am-form-group">
+                    <button class="am-btn am-btn-default am-animation-shake" type="submit">搜索</button>
+                </div>
+            </form>
+        </div>
+        <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+    </div>
+
+    <div class="am-g">
+        <div class="am-u-sm-12">
+            <table class="am-table am-table-striped am-table-hover table-main am-table-bordered .am-scrollable-horizontal">
+                <thead>
+                <tr>
+                    <th class="table-title" >系统</th>
+                    <th class="table-title" >IP</th>
+                    <th class="table-title" >内存剩余</th>
+                    <th class="table-title" >创建时间</th>
+                    <th class="table-title">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                #foreach($sysInfo in ${systemInfos.list})
+                <tr>
+                    <td ><span class="am-badge am-badge-secondary am-round">$!{sysInfo.osname}</span></td>
+                    <td >$!{sysInfo.ip}</td>
+                    <td ><span class="am-badge am-badge-secondary am-round">$!math.div($!{sysInfo.phyfreememory},1000) G</span></td>
+                    <td > $date.format($!sysInfo.createTime)</td>
+                    <td><button  value="$!{sysInfo.id}" type="button" class="detail am-btn  am-btn-default am-animation-fade"><span>详情</span></button></td>
+                </tr>
+                #end
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+    <div class="am-cf">
+
+        <span>当前页号:</span> <span>$systemInfos.pageNum</span>/<span>${systemInfos.pages}</span>
+
+        <div class="am-fr">
+
+            <ul data-am-widget="pagination"
+                class="am-pagination am-pagination-default"
+            >
+                <li class="am-pagination-first ">
+                    <a href="${springMacroRequestContext.contextPath}/manager/system?page=1" class="">第一页</a>
+                </li>
+                #if($systemInfos.hasPreviousPage)
+                    <li class="am-pagination-prev ">
+                        <a href="${springMacroRequestContext.contextPath}/manager/system?page=$math.sub($systemInfos.pageNum,1)" >上一页</a>
+                    </li>
+                #end
+
+                <li class="">
+                    <a href="#" class="am-active">$systemInfos.pageNum</a>
+                </li>
+                #if($systemInfos.hasNextPage)
+                    #set($nextPageNum=$systemInfos.pageNum+1)
+                    <li class="am-pagination-next ">
+                        <a href="${springMacroRequestContext.contextPath}/manager/system?page=$nextPageNum" >下一页</a>
+                    </li>
+                #end
+
+
+                <li class="am-pagination-last ">
+                    <a href="${springMacroRequestContext.contextPath}/manager/system?page=$systemInfos.lastPage" class="">最末页</a>
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+
+</div>
+
+<script  type="text/javascript" src="${springMacroRequestContext.contextPath}/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+$(function(){
+   $(".detail").click(function () {
+       var id=$(this).val();
+       $.ajax({
+           url:"/manager/detail",
+           dataType:'json',
+           data:{"id":id},
+           type: "POST",
+           success:function(datas){
+               var contents="<article class='am-article'>id:"+id+"详情";
+               $.each(datas,function(key,value){
+               contents=contents+ "<p class='am-article-meta'>"+key+"</p>";
+                contents=contents+" <div class='am-article-bd'> <p class='am-article-lead'>"+value+" </p> </div>"
+               });
+               contents=contents+"</article>";
+               layer.alert(contents, {
+                   icon: 1,
+                   skin: 'layer-ext-moon' //该皮肤由layer.seaning.com友情扩展。关于皮肤的扩展规则，去这里查阅
+               })
+
+           },
+           error:function(error){
+                alert(error);
+           }
+       });
+
+   });
+});
+
+</script>
