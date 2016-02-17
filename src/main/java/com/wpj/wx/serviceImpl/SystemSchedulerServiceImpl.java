@@ -54,6 +54,6 @@ public class SystemSchedulerServiceImpl implements SystemSchedulerService {
         tbSystemInfo.setPhyfreememory(SystemOSUtils.getOsPhysicalFreeMemory());
         tbSystemInfo.setPhymemory(SystemOSUtils.getOsPhysicalMemory());
         systemInfoService.save(tbSystemInfo);
-        logger.info("定时任务成功");
+        logger.info("定时任务成功开始....");
     }
 }

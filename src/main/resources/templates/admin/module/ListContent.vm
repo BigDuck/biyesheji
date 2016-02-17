@@ -104,7 +104,7 @@
                         </li>
                         #if($listMain.hasPreviousPage)
                             <li class="am-pagination-prev ">
-                                <a href="/admin/main/list?page="+$listMain.pageNum-1" >上一页</a>
+                                <a href="/admin/main/list?page=" +$listMain.pageNum-1" >上一页</a>
                             </li>
                         #end
 
@@ -114,13 +114,14 @@
                         #if($listMain.hasNextPage)
                             #set($nextPageNum=$listMain.pageNum+1)
                             <li class="am-pagination-next ">
-                                <a href="${springMacroRequestContext.contextPath}/admin/main/list?page=$nextPageNum" >下一页</a>
+                                <a href="${springMacroRequestContext.contextPath}/admin/main/list?page=$nextPageNum">下一页</a>
                             </li>
                         #end
 
 
                         <li class="am-pagination-last ">
-                            <a href="${springMacroRequestContext.contextPath}/admin/main/list?page=$listMain.lastPage" class="">最末页</a>
+                            <a href="${springMacroRequestContext.contextPath}/admin/main/list?page=$listMain.lastPage"
+                               class="">最末页</a>
                         </li>
                     </ul>
 

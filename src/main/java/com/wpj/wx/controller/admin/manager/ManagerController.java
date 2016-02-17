@@ -8,6 +8,7 @@ package com.wpj.wx.controller.admin.manager;
 
 import com.github.pagehelper.PageInfo;
 import com.wpj.wx.aop.Procedure;
+import com.wpj.wx.common.Config;
 import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.daomain.PageRequest;
 import com.wpj.wx.daomain.TbIplogs;
@@ -53,7 +54,7 @@ public class ManagerController extends BaseController {
         map.addAttribute("page", pageRequest.getPage());
         map.addAttribute("rows", pageRequest.getRows());
         map.addAttribute("MyTemplate", "admin/system/ipList.vm");
-        return "admin/index";
+        return Config.INDEX;
     }
 
     @InitBinder

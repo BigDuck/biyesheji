@@ -6,10 +6,14 @@
 
 package com.wpj.wx.service;
 
+
 import com.wpj.wx.daomain.TbMenuitem;
+
+import java.util.List;
 
 /**
  * Created by WPJ587 on 2015/10/13.
  */
 public interface MenuItemService extends IService<TbMenuitem> {
+    List<TbMenuitem> getMenuByPage(TbMenuitem tbMenuitem, int page, int rows);
 }

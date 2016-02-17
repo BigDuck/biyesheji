@@ -24,6 +24,20 @@ public class FileUploadConfiguration {
      */
     private String waterName;
 
+    /***
+     * slider 的图片路径
+     * @return
+     */
+    private String sliderPath;
+
+    public String getSliderPath() {
+        return sliderPath;
+    }
+
+    public void setSliderPath(String sliderPath) {
+        this.sliderPath = sliderPath;
+    }
+
     public String getWaterName() {
         return waterName;
     }

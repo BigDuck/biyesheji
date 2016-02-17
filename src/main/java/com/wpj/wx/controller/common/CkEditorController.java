@@ -53,21 +53,21 @@ public class CkEditorController extends BaseController {
         PrintWriter out = response.getWriter();
         // CKEditor提交的很重要的一个参数
         String callback = request.getParameter("CKEditorFuncNum");
-        String expandedName = ""; // 文件扩展名
+//        String expandedName = ""; // 文件扩展名
         String uploadContentType = file.getContentType();
         MyLogeer.info(uploadContentType);
         if (uploadContentType.equals("image/jpeg")
-                || uploadContentType.equals("image/jpeg")) {
+                || uploadContentType.equals("image/pjpeg")) {
             // IE6上传jpg图片的headimageContentType是image/pjpeg，而IE9以及火狐上传的jpg图片是image/jpeg
-            expandedName = ".jpg";
+            //expandedName = ".jpg";
         } else if (uploadContentType.equals("image/png")
                 || uploadContentType.equals("image/x-png")) {
             // IE6上传的png图片的headimageContentType是"image/x-png"
-            expandedName = ".png";
+           // expandedName = ".png";
         } else if (uploadContentType.equals("image/gif")) {
-            expandedName = ".gif";
+           // expandedName = ".gif";
         } else if (uploadContentType.equals("image/bmp")) {
-            expandedName = ".bmp";
+           // expandedName = ".bmp";
         } else {
             out.println("<script type=\"text/javascript\">");
             out.println("window.parent.CKEDITOR.tools.callFunction(" + callback

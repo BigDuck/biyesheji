@@ -3,7 +3,6 @@
  * @author wupeiji It will be
  * @Email wpjlovehome@gmail.com
  */
-
 package com.wpj.wx;
 
 import com.wpj.wx.util.FileUploadConfiguration;
@@ -16,14 +15,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
-/**
- * Hello world!
- *
- */
 @SpringBootApplication
 @EnableCaching
 @EnableAutoConfiguration

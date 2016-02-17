@@ -1,0 +1,54 @@
+<div class="admin-content">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf">
+            <strong class="am-text-primary am-text-lg"><a href="/admin/slider">后台首页</a></strong> /
+            <small>轮播列表</small>
+        </div>
+    </div>
+    <div class="am-g">
+        <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8"></div>
+        <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+            <div class="am-btn-toolbar">
+                <div class="am-btn-group am-btn-group-xs">
+                    <button type="button" onclick="sliderAdd()" class="am-btn am-btn-default am-animation-scale-up"><span class="am-icon-plus"></span> 新增</button>
+                    <button type="button" class="am-btn am-btn-danger am-animation-scale-down"><span class="am-icon-trash-o"></span> 删除
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="am-g">
+        <div class="am-u-sm-12">
+            <table class="am-table am-table-striped am-table-hover table-main am-table-bordered">
+                <thead>
+                <tr>
+                    <th class="table-id">ID</th>
+                    <th class="table-title">IP</th>
+                    <th class="table-type">url</th>
+                    <th class="table-author">参数</th>
+                    <th class="table-date">创建时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                    #foreach($ip in ${iplist.list})
+                    <tr>
+                        <td>${ip.id}</td>
+                        <td>${ip.ip}</td>
+                        <td>${ip.url}</td>
+                        <td>${ip.params}</td>
+                        <td>$date.format($ip.createTime)</td>
+
+                    </tr>
+                    #end
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function sliderAdd(){
+        location.href="../admin/slider/add";
+    }
+</script>

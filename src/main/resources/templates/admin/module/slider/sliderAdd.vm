@@ -1,0 +1,114 @@
+<style type="text/css">
+    .sliderPlus, .sliderSub {
+        cursor: pointer;
+        margin-left: 0px;
+        margin-bottom: 0px;
+        position: absolute;
+        left: 0;
+    }
+    img{
+        width: auto;
+        height: 50px;
+    }
+</style>
+
+<div class="admin-content">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf">
+            <strong class="am-text-primary ">
+                <a href="/admin/main">后台首页</a>/<a href="/admin/slider">轮播列表</a></strong> /
+            <small>新增轮播</small>
+        </div>
+    </div>
+    <div class="am-g">
+        <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8"></div>
+        <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+        </div>
+    </div>
+    <div class="am-g">
+        <div class="am-u-sm-12">
+            <form class="am-form am-form-horizontal" action="" method="post" enctype="multipart/form-data">
+
+                <section data-am-widget="accordion" class=" am-accordion am-accordion-gapped" data-am-accordion='{  }'>
+
+                    <div class="am-u-sm-10">
+                        <dl class="am-accordion-item am-active ">
+                            <dt class="am-accordion-title">
+                                轮播一
+                            </dt>
+                            <dd class="am-accordion-bd am-collapse am-in">
+                                <!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
+                                <div class="am-accordion-content">
+
+                                    <div class="am-form-group">
+                                        <label for="gonggao-add-content" class="am-u-sm-2 am-form-label">图片</label>
+
+                                        <div class="am-u-sm-10">
+                                            <div class="am-u-sm-10">
+                                                <input type="text" onclick="openUpload()"
+                                                       placeholder="点击添加图片"/>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="am-form-group">
+                                        <label for="gonggao-add-url" class="am-u-sm-2 am-form-label">URL</label>
+
+                                        <div class="am-u-sm-10">
+                                            <div class="am-u-sm-10">
+                                                <input type="text" id="gonggao-add-url" name="gonggao.url"
+                                                       placeholder="请输入公告链接" value="#">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="am-form-group">
+                                        <label for="gonggao-add-sn" class="am-u-sm-2 am-form-label">内容</label>
+
+                                        <div class="am-u-sm-10">
+                                            <div class="am-u-sm-10">
+                                                <input type="number" id="gonggao-add-sn" name="gonggao.sn"
+                                                       placeholder="不填写自动生成，排序号按从小到大自动播放">
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="am-u-sm-2">
+                        <span class="am-icon-plus-square sliderPlus" title="新增一组" onclick=""/>
+                        <span class="am-icon-remove sliderSub" title="删除本组" onclick=""/>
+                    </div>
+
+                </section>
+                <div class="am-form-group">
+
+                    <div class="am-u-sm-10 am-u-sm-offset-2">
+                        <button type="submit" class="am-btn am-btn-default">提交</button>
+                        <a type="button" class="am-btn am-btn-default" onclick="javascript:history.back(-2)">返回</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script style="text/javascript">
+    function openUpload() {
+        layer.open({
+            type: 2,
+            title: 'layer mobile页',
+            shadeClose: true,
+            shade: 0.8,
+            area: ['90%', '90%'],
+            content: '/admin/upload' //iframe的url
+        });
+    }
+
+</script>

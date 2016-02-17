@@ -1,0 +1,101 @@
+<style type="text/css">
+    .sliderPlus, .sliderSub {
+        cursor: pointer;
+        margin-left: 0px;
+        margin-bottom: 0px;
+        position: absolute;
+        left: 0;
+    }
+    .munuItem{
+        padding:10px;
+
+    }
+    .delete{
+        position: relative;
+        top: -10px;
+        left: 5px;
+        cursor: pointer;
+    }
+    img {
+        width: auto;
+        height: 50px;
+    }
+    .add{
+        width: 20px;
+        height: 20px;
+    }
+    .addMenuItem{
+        cursor: pointer;
+    }
+</style>
+
+<div class="admin-content">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf">
+            <strong class="am-text-primary ">
+                <a href="/admin/main">后台首页</a>/<a href="/admin/slider">菜单列表</a></strong> /
+            <small>新增菜单</small>
+        </div>
+    </div>
+    <div class="am-g">
+        <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8"></div>
+        <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+        </div>
+    </div>
+    <div class="am-g">
+        <div class="am-u-sm-12">
+            <form class="am-form am-form-horizontal">
+
+                <section data-am-widget="accordion" class=" am-accordion am-accordion-gapped" data-am-accordion='{  }'>
+
+                    <div class="am-u-sm-12">
+
+                        <dl class="am-accordion-item am-u-sm-10">
+                            #foreach($menuName in $allMenu)
+                                <dt class="am-accordion-title">
+                                    #if($menuName.menuName)
+                                    $menuName.menuName
+                                    #end
+                                </dt>
+                                <dd class="am-accordion-bd am-collapse">
+                                    <!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
+                                    <div class="am-accordion-content">
+                                        #foreach($item in $allMenuItem)
+                                            #if($menuName.menuId==$item.menuId)
+                                                #if($math.mod($item.menuitemId,5)==0)
+                                                    <span class="am-animation-scale-up am-badge am-badge-primary  munuItem" >
+                                                        $item.title<span class="am-icon-trash-o delete" title="删除"></span></span>
+                                                #elseif($math.mod($item.menuitemId,5)==1)
+                                                    <span class="am-animation-fade am-badge am-badge-secondary munuItem ">
+                                                        $item.title<span class="am-icon-trash-o delete " title="删除"></span></span>
+                                                #elseif($math.mod($item.menuitemId,5)==2)
+                                                    <span class="am-animation-slide-right am-badge am-badge-success munuItem">
+                                                        $item.title<span class="am-icon-trash-o delete" title="删除"></span></span>
+                                                #elseif($math.mod($item.menuitemId,5)==3)
+                                                    <span class="am-animation-shake am-badge am-badge-warning  munuItem " >
+                                                        $item.title<span class="am-icon-trash-o delete" title="删除"></span></span> #elseif($math.mod($item.menuitemId,5)==4)
+                                                    <span class="am-animation-fade am-badge am-badge-danger munuItem" >
+                                                        $item.title<span class="am-icon-trash-o delete"></span></span>
+                                                #end
+
+                                            #end
+                                        #end
+                                        <span class="am-badge am-badge-warning munuItem addMenuItem" title="新增">
+                                            +
+                                            </span>
+                                    </div>
+                                </dd>
+                            #end
+                        </dl>
+                        <div class="am-u-sm-2">
+                            <span class="am-icon-plus-square sliderPlus" title="新增一组" onclick=""/>
+                            <span class="am-icon-remove sliderSub" title="删除本组" onclick=""/>
+                        </div>
+                    </div>
+
+                </section>
+
+            </form>
+        </div>
+    </div>
+</div>
