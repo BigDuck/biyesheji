@@ -16,16 +16,30 @@ import java.util.Map;
  * Created by WPJ587 on 2015/11/1.
  */
 public interface ListMainService  extends IService<TbListmain> {
+    /**
+     * Find content message by id map.
+     *
+     * @param id the id
+     * @return the map
+     */
     Map<String,Object>  findContentMessageById(int id);
 
     /**
      * 根据条件分页查询
-     * @param listmain
-     * @param page
-     * @param rows
-     * @return
+     *
+     * @param listmain the listmain
+     * @param page     the page
+     * @param rows     the rows
+     * @return list
      */
     List<TbListmain> selectByListmain(TbListmain listmain, int page, int rows);
+    
+    /**
+     * Find list main by page list.
+     *
+     * @param page the page
+     * @return the list
+     */
     List<TbListmain>   findListMainByPage(Page page);
     int findCountNo();
 }

@@ -37,12 +37,16 @@
                 ##网站标题动画开始
                     <div class="am-form-group">
                         <label for="title-anima">标题动画</label>
-                      <input type="text" id="title-anima" value="$header.classId">
+                      <input type="text" id="title-anima" value="
+                      #if($header.classId)$header.classId#end
+
+                      ">
                     </div>
                 ##网站标题结束
                     <div class="am-form-group">
                         <label for="web-theme">网站主题</label>
-                        <input type="text" class=""  id="web-theme" name="theme" value="$header.theme" maxlength="15">
+                        <input type="text" class=""  id="web-theme" name="theme" value="
+                        #if($header.theme)$header.theme#end" placeholder="请填写网站主题" maxlength="15">
                     </div>
                     <div class="am-form-group">
                         <label for="title-anima">固定标题</label>

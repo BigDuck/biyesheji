@@ -6,8 +6,12 @@
 
 package com.wpj.wx.controller;
 
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
 import com.wpj.wx.controller.common.BaseController;
-import com.wpj.wx.serviceImpl.ListServiceImpl;
+import com.wpj.wx.daomain.BaseResult;
+import com.wpj.wx.serviceimpl.ListServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,13 +25,15 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/lists")
+@Api(basePath = "/lists", value = "TbList", description = "列表相关")
 public class ListController extends BaseController {
     @Autowired
     ListServiceImpl listService;
     @RequestMapping("/list/{id}")
-    public Object getAll(@PathVariable("id")int  id,String callbackparam){
+    @ApiOperation(value = "获取列表信息", httpMethod = "GET", notes = "根据列表id获取列表的信息",response = BaseResult.class)
+    public Object getAll(@ApiParam(name = "id",required = true,value = "列表Id")@PathVariable("id")int  id, String callbackparam){
         Map<String,Object> map=new HashMap<>();
-        map.put("list1",listService.selectByKey(id));
+        map.put("list",listService.selectByKey(id));
         return super.toClient(callbackparam,map);
     }
 

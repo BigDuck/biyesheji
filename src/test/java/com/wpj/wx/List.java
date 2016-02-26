@@ -6,8 +6,10 @@
 
 package com.wpj.wx;
 
+import com.wpj.wx.dao.TbListmainMapper;
 import com.wpj.wx.daomain.TbList;
-import com.wpj.wx.serviceImpl.ListServiceImpl;
+import com.wpj.wx.daomain.TbListmain;
+import com.wpj.wx.serviceimpl.ListServiceImpl;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,9 +23,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class List extends BaseTest{
     @Autowired
     ListServiceImpl listService;
+    @Autowired
+    TbListmainMapper tbListmainMapper;
     @Test
     public void test(){
       java.util.List<TbList> tbList= listService.findSimpleMessage();
         System.out.println("--->"+tbList.toString());
+    }
+    @Test
+    public void tests(){
+        java.util.List<TbListmain> re=  tbListmainMapper.getByListId(1);
+        System.out.println(re);
     }
 }

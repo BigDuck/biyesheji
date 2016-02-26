@@ -16,5 +16,5 @@ import java.lang.annotation.*;
 @Target(ElementType.METHOD)
 @Documented
 public @interface Procedure {
-	String description() default "";
+	String description() default "无";
 }

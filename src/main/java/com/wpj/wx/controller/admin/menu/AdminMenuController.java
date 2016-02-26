@@ -6,6 +6,7 @@
 
 package com.wpj.wx.controller.admin.menu;
 
+import com.mangofactory.swagger.annotations.ApiIgnore;
 import com.wpj.wx.daomain.TbMenu;
 import com.wpj.wx.daomain.TbMenuitem;
 import com.wpj.wx.service.MenuItemService;
@@ -25,6 +26,7 @@ import java.util.List;
  **/
 @Controller
 @RequestMapping("/admin")
+@ApiIgnore
 public class AdminMenuController {
     @Autowired
     MenuService menuService;

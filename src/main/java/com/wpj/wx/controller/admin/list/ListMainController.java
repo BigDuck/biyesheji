@@ -8,6 +8,7 @@ package com.wpj.wx.controller.admin.list;
 
 import com.github.pagehelper.PageInfo;
 import com.google.common.base.Strings;
+import com.mangofactory.swagger.annotations.ApiIgnore;
 import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.daomain.TbList;
@@ -28,6 +29,7 @@ import java.util.List;
  **/
 @Controller
 @RequestMapping(value = "/admin")
+@ApiIgnore
 public class ListMainController extends BaseController {
     @Autowired
     ListMainService listMainService;
@@ -71,14 +73,12 @@ public class ListMainController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/main/list/{listId}")
-    @Procedure(description = "查看istmain详情")
     public String detailPage(@PathVariable(value = "listId") int listId,
                              @RequestParam(value = "type",required = false)String type,
                              ModelMap map) {
         MyLogeer.info(MYTAG + "listId is {}", listId);
         TbListmain result = listMainService.selectByKey(listId);
         List<TbList> tbLists = listServiceImpl.findSimpleMessage();
-        MyLogeer.info("result {},\ntblist:{}", result.toString(),tbLists);
         map.addAttribute("listMain", result);
         map.addAttribute("listMsg",tbLists);
        if((!Strings.isNullOrEmpty(type))&&"view".equals(type)){

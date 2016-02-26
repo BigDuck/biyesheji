@@ -7,6 +7,7 @@
 package com.wpj.wx.controller.admin.manager;
 
 import com.github.pagehelper.PageInfo;
+import com.mangofactory.swagger.annotations.ApiIgnore;
 import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.common.Config;
 import com.wpj.wx.controller.common.BaseController;
@@ -38,6 +39,7 @@ import java.util.List;
  **/
 @Controller
 @RequestMapping("/manager")
+@ApiIgnore
 public class ManagerController extends BaseController {
     @Autowired
     IpLogService ipLogService;

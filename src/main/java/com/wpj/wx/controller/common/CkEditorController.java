@@ -6,6 +6,7 @@
 
 package com.wpj.wx.controller.common;
 
+import com.mangofactory.swagger.annotations.ApiIgnore;
 import com.wpj.wx.util.FileUploadConfiguration;
 import com.wpj.wx.util.FileUploadHelper;
 import com.wpj.wx.util.ImagesUtils;
@@ -31,6 +32,8 @@ import java.io.PrintWriter;
  **/
 @Controller
 @RequestMapping("/uploads")
+@ApiIgnore
+
 public class CkEditorController extends BaseController {
     @Autowired
     private FileUploadConfiguration fileUploaderConfiguration;

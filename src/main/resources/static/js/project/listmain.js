@@ -20,7 +20,7 @@ function btn_delClick(listid) {
 
         $.ajax({
             type: "POST",
-            url: '/admin/delete',
+            url: '../admin/delete',
             data:{"id":listid},
             dataType:'json',
             cache: false,

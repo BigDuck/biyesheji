@@ -6,26 +6,36 @@
         position: absolute;
         left: 0;
     }
-    .munuItem{
-        padding:10px;
+
+    .munuItem {
+        padding: 10px;
 
     }
-    .delete{
+
+    .delete {
         position: relative;
         top: -10px;
         left: 5px;
         cursor: pointer;
     }
+
     img {
         width: auto;
         height: 50px;
     }
-    .add{
+
+    .add {
         width: 20px;
         height: 20px;
     }
-    .addMenuItem{
+
+    .addMenuItem {
         cursor: pointer;
+    }
+
+    .am-icon-remove {
+        margin-top: -50px;
+        position: absolute;
     }
 </style>
 
@@ -33,7 +43,7 @@
     <div class="am-cf am-padding">
         <div class="am-fl am-cf">
             <strong class="am-text-primary ">
-                <a href="/admin/main">后台首页</a>/<a href="/admin/slider">菜单列表</a></strong> /
+                <a href="${springMacroRequestContext.contextPath}/admin/main">后台首页</a>/<a href="${springMacroRequestContext.contextPath}/admin/slider">菜单列表</a></strong> /
             <small>新增菜单</small>
         </div>
     </div>
@@ -52,44 +62,57 @@
 
                         <dl class="am-accordion-item am-u-sm-10">
                             #foreach($menuName in $allMenu)
-                                <dt class="am-accordion-title">
+                                <dt class="am-accordion-title am-animation-slide-right">
                                     #if($menuName.menuName)
                                     $menuName.menuName
                                     #end
                                 </dt>
+
                                 <dd class="am-accordion-bd am-collapse">
-                                    <!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
                                     <div class="am-accordion-content">
                                         #foreach($item in $allMenuItem)
                                             #if($menuName.menuId==$item.menuId)
                                                 #if($math.mod($item.menuitemId,5)==0)
-                                                    <span class="am-animation-scale-up am-badge am-badge-primary  munuItem" >
-                                                        $item.title<span class="am-icon-trash-o delete" title="删除"></span></span>
+                                                    <span class="am-animation-scale-up am-badge am-badge-primary  munuItem">
+                                                        $item.title<span class="am-icon-trash-o delete"
+                                                                         title="删除"
+                                                                         onclick="deleteItem($item.menuitemId)"></span></span>
                                                 #elseif($math.mod($item.menuitemId,5)==1)
                                                     <span class="am-animation-fade am-badge am-badge-secondary munuItem ">
-                                                        $item.title<span class="am-icon-trash-o delete " title="删除"></span></span>
+                                                        $item.title<span class="am-icon-trash-o delete "
+                                                                         title="删除"
+                                                                         onclick="deleteItem($item.menuitemId)"></span></span>
                                                 #elseif($math.mod($item.menuitemId,5)==2)
                                                     <span class="am-animation-slide-right am-badge am-badge-success munuItem">
-                                                        $item.title<span class="am-icon-trash-o delete" title="删除"></span></span>
+                                                        $item.title<span class="am-icon-trash-o delete"
+                                                                         title="删除"
+                                                                         onclick="deleteItem($item.menuitemId)"></span></span>
                                                 #elseif($math.mod($item.menuitemId,5)==3)
-                                                    <span class="am-animation-shake am-badge am-badge-warning  munuItem " >
-                                                        $item.title<span class="am-icon-trash-o delete" title="删除"></span></span> #elseif($math.mod($item.menuitemId,5)==4)
-                                                    <span class="am-animation-fade am-badge am-badge-danger munuItem" >
-                                                        $item.title<span class="am-icon-trash-o delete"></span></span>
+                                                    <span class="am-animation-shake am-badge am-badge-warning  munuItem ">
+                                                        $item.title<span class="am-icon-trash-o delete"
+                                                                         title="删除"></span></span> #elseif($math.mod($item.menuitemId,5)==4)
+                                                    <span class="am-animation-fade am-badge am-badge-danger munuItem">
+                                                        $item.title<span title="删除"
+                                                                         onclick="deleteItem($item.menuitemId)"
+                                                                         class="am-icon-trash-o delete"></span></span>
                                                 #end
 
                                             #end
                                         #end
-                                        <span class="am-badge am-badge-warning munuItem addMenuItem" title="新增">
+                                        <span class="am-badge am-badge-warning munuItem addMenuItem"
+                                              type="button"    onclick="addMenuItem($menuName.menuId)"  data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0, width: 400, height: 225}" title="新增">
                                             +
                                             </span>
                                     </div>
                                 </dd>
+                                <div>
+                                    <span class="am-icon-remove sliderSub am-animation-shake" title="删除本组"
+                                          onclick="deleteMenu($menuName.menuId)"/>
+                                </div>
                             #end
                         </dl>
                         <div class="am-u-sm-2">
                             <span class="am-icon-plus-square sliderPlus" title="新增一组" onclick=""/>
-                            <span class="am-icon-remove sliderSub" title="删除本组" onclick=""/>
                         </div>
                     </div>
 
@@ -99,3 +122,175 @@
         </div>
     </div>
 </div>
+## 新增的模态框
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">新增子菜单
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            <div class="am-form-group">
+                <label for="menuId" id="menuIdLable">父菜单名字:</label>
+                <input type="text" placeholder="无" id="menuId"/>
+            </div>
+            <div class="am-form-group">
+                <label for="menuitemId">子菜单名字:</label>
+                <input type="text" id="menuitemId" placeholder="请填写子菜单名字"/>
+            </div>
+            <div class="am-form-group">
+                <button class="am-btn am-btn-primary" onclick="itemSubmit()">提交</button>
+                <button class="am-btn am-btn-danger" data-am-modal-close>取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+## 新增的模态框结束
+
+
+                        <script type="text/javascript">
+                            $(function () {
+                                $(".am-icon-remove").mouseover(function () {
+                                    $(this).addClass("am-animation-spin");
+                                })
+                                $(".am-icon-remove").mouseleave(function () {
+                                    $(this).removeClass("am-animation-spin");
+                                })
+                                $(".delete").mouseover(function () {
+                                    $(this).addClass("am-animation-scale-up");
+                                })
+                                $(".delete").mouseleave(function () {
+                                    $(this).removeClass("am-animation-scale-up");
+                                })
+
+                            })
+                            function deleteItem(id) {
+                                layer.confirm('你确定删除？', {
+                                    btn: ['取消', '确定'] //按钮
+                                }, function () {
+                                    layer.msg('取消成功', {icon: 1});
+                                }, function () {
+                                    var index = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+                                    $.ajax({
+                                        type: "POST",
+                                        url: '',
+                                        data: {"id": id},
+                                        dataType: 'json',
+                                        cache: false,
+                                        success: function (res) {
+                                            layer.close(index);
+                                            if (res == "1") {
+                                                layer.alert('删除成功!', {
+                                                    icon: 6,
+                                                    skin: 'layer-ext-moon'
+                                                });
+                                                $("#row_" + listid).remove();
+                                            } else {
+                                                layer.alert('删除失败!', {
+                                                    icon: 2,
+                                                    skin: 'layer-ext-moon'
+                                                });
+                                            }
+                                        },
+                                        error: function (res) {
+                                            layer.close(index);
+                                            layer.alert('删除失败!', {
+                                                icon: 2,
+                                                skin: 'layer-ext-moon'
+                                            });
+                                        }
+                                    });
+
+                                });
+                            }
+                            function addMenuItem(menuId) {
+                                $('#login-tabs').tabs();
+                            }
+                            function deleteMenu(id) {
+                                layer.confirm('你确定删除？', {
+                                    btn: ['取消', '确定'] //按钮
+                                }, function () {
+                                    layer.msg('取消成功', {icon: 1});
+                                }, function () {
+                                    var index = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+
+                                    $.ajax({
+                                        type: "POST",
+                                        url: '',
+                                        data: {"id": id},
+                                        dataType: 'json',
+                                        cache: false,
+                                        success: function (res) {
+                                            layer.close(index);
+                                            if (res == "1") {
+                                                layer.alert('删除成功!', {
+                                                    icon: 6,
+                                                    skin: 'layer-ext-moon'
+                                                });
+                                                $("#row_" + listid).remove();
+                                            } else {
+                                                layer.alert('删除失败!', {
+                                                    icon: 2,
+                                                    skin: 'layer-ext-moon'
+                                                });
+                                            }
+                                        },
+                                        error: function (res) {
+                                            layer.close(index);
+                                            layer.alert('删除失败!', {
+                                                icon: 2,
+                                                skin: 'layer-ext-moon'
+                                            });
+                                        }
+                                    });
+
+                                });
+                            }
+                            function itemSubmit(){
+                                var menuId=$("#menuId").val();
+                                var menuSub=$("#menuitemId").val();
+                                layer.confirm('确定添加 ?', {
+                                    btn: ['取消', '确定'] //按钮
+                                }, function () {
+                                    layer.msg('取消成功', {icon: 1});
+                                }, function () {
+                                    var index = layer.load(1, {shade: false}); //0代表加载的风格，支持0-2
+                                    $.ajax({
+                                        type: "POST",
+                                        url: '',
+                                        data: {"menuId": menuId,"menuitemId":menuSub},
+                                        dataType: 'json',
+                                        cache: false,
+                                        success: function (res) {
+                                            layer.close(index);
+                                            if (res == "1") {
+                                                layer.alert('添加成功!', {
+                                                    icon: 6,
+                                                    skin: 'layer-ext-moon'
+                                                });
+
+                                            } else {
+                                                layer.alert('添加失败!', {
+                                                    icon: 2,
+                                                    skin: 'layer-ext-moon'
+                                                });
+
+                                            }
+                                        },
+                                        error: function (res) {
+                                            layer.close(index);
+                                            layer.alert('添加失败!', {
+                                                icon: 2,
+                                                skin: 'layer-ext-moon'
+                                            });
+
+                                        }
+                                    });
+                                });
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

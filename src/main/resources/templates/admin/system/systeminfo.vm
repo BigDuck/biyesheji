@@ -93,7 +93,7 @@ $(function(){
    $(".detail").click(function () {
        var id=$(this).val();
        $.ajax({
-           url:"/manager/detail",
+           url:"../manager/detail",
            dataType:'json',
            data:{"id":id},
            type: "POST",

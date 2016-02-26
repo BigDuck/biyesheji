@@ -378,5 +378,13 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     	result.append(val.substring(1));
     	return result.toString();
     }
-    
+
+	/**
+	 * 非空
+	 * @param string
+	 * @return
+     */
+    public static boolean isNoneEmtryAndNull(Object string){
+		return string!=null&&string!="";
+	}
 }

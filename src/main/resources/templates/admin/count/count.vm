@@ -1,0 +1,107 @@
+<script src="${springMacroRequestContext.contextPath}/plugins/echarts/echarts.js"></script>
+
+<div class="admin-content" id="admin-content">
+
+    <ol class="am-breadcrumb">
+        <li><a href="${springMacroRequestContext.contextPath}/admin/main" class="am-icon-home">后台首页</a></li>
+        <li>调用统计</li>
+    </ol>
+
+    <div class="am-g">
+        <div class="am-u-sm-12">
+            <form class="am-form-inline" onsubmit="return false">
+                <div class="am-form-group">
+                    开始时间
+                    <input type="text" placeholder="开始时间"  name="startTime" id="startTime" class="Wdate am-form-field"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+                </div>
+                <div class="am-form-group">
+                    结束时间
+                    <input type="text" placeholder="结束时间"  name="endTime" id="endTime" class="Wdate am-form-field"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+                </div>
+                <div class="am-form-group">
+                    IP地址
+                    <input type="text" placeholder="请输入要查询的IP" id="ipAddress" name="ipAddress"/>
+                </div>
+                <div class="am-form-group">
+                    <button class="am-btn am-btn-default am-animation-fade" onclick="getData()" type="button">搜索</button>
+                    <button class="am-btn am-btn-danger am-animation-shake" type="reset">重置</button>
+                </div>
+            </form>
+        </div>
+        <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+    </div>
+    <div class="am-g">
+        <div class="am-u-sm-12">
+            <div id="main" style="height:400px"></div>
+
+        </div>
+    </div>
+    <div class="am-cf">
+
+    </div>
+
+</div>
+<script  type="text/javascript" src="${springMacroRequestContext.contextPath}/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: '../plugins/echarts'
+        }
+    });
+    // 使用
+function getData(){
+    require(
+            [
+                'echarts',
+                'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+                'echarts/chart/line'
+            ],
+
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main'));
+                var option ;
+                var index = layer.load(0, {shade: false});
+                console.log($("#startTime").val());
+                $.ajax({
+                    url:"../admin/count/getCount",
+                    dataType:'json',
+                    data:{"startTime":$("#startTime").val(),"endTime":$("#endTime").val(),"ipAddress":$("#ipAddress").val()},
+                    type: "POST",
+                    success:function(datas){
+                        layer.close(index);
+                        console.log("success:"+datas);
+                        option=datas;
+                     //   myChart.setOption(option,true);
+                        if(datas=null){
+                            layer.alert('获取数据失败!', {
+                                icon: 5,
+                                skin: 'layer-ext-moon'
+                            });
+                        }else{
+//                            option=datas;
+                           myChart.setOption(option,true);
+                        }
+
+                    },
+                    error:function(error){
+                        console.log(error);
+                        layer.close(index);
+                        layer.alert('获取数据失败!', {
+                            icon: 5,
+                            skin: 'layer-ext-moon'
+                        });
+                    }
+                });
+
+                // 为echarts对象加载数据
+
+            }
+    );
+
+}
+    getData();
+
+</script>

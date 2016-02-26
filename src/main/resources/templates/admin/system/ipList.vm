@@ -19,7 +19,6 @@
                 <div class="am-form-group">
                     <button class="am-btn am-btn-default am-animation-fade" type="submit">搜索</button>
                     <button class="am-btn am-btn-danger am-animation-shake" type="reset">重置</button>
-                    <button class="am-btn am-btn-success am-animation-left-spring" type="button">实时图表</button>
                 </div>
             </form>
         </div>

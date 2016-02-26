@@ -6,9 +6,13 @@
 
 package com.wpj.wx.controller;
 
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
 import com.wpj.wx.controller.common.BaseController;
+import com.wpj.wx.daomain.BaseResult;
 import com.wpj.wx.daomain.TbSlider;
-import com.wpj.wx.serviceImpl.SliderServiceImpl;
+import com.wpj.wx.serviceimpl.SliderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,21 +24,42 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/sliders")
+@Api(basePath = "/sliders", value = "TbSlider", description = "轮播")
 public class SliderController extends BaseController {
     @Autowired
-    SliderServiceImpl sliderService;
+    private SliderServiceImpl sliderService;
+
+    /**
+     * Gets slider.
+     *
+     * @param id            the id
+     * @param callbackparam the callbackparam
+     * @return the slider
+     */
     @RequestMapping("/slider/{id}")
     @ResponseBody
-    public Object getSlider(@PathVariable("id")int  id,String callbackparam){
-        Map<String,Object> map=new HashMap<>();
-        map.put("slider",sliderService.findAllMenuMessageById(id));
-        return super.toClient(callbackparam,map);
+    @ApiOperation(value = "获取轮播信息", httpMethod = "GET", notes = "根据轮播id获取轮播的信息", response = BaseResult.class)
+    public Object getSlider(@ApiParam(name = "id", required = true, value = "轮播Id")
+                            @PathVariable("id") int id, String callbackparam) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("slider", sliderService.findAllMenuMessageById(id));
+        return super.toClient(callbackparam, map);
     }
+
+    /**
+     * Add header object.
+     *
+     * @param tbSlider      the tb slider
+     * @param callbackparam the callbackparam
+     * @return the object
+     */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public Object addHeader(@RequestBody TbSlider tbSlider,String callbackparam){
-        MyLogeer.info("传来的实体"+tbSlider);
-        return  super.toClient(callbackparam,null);
+    @ApiOperation(value = "增加轮播信息", httpMethod = "POST", notes = "增加轮播信息", response = BaseResult.class)
+    public Object addHeader(@ApiParam(name = "id", required = true, value = "轮播Id")
+                            @RequestBody TbSlider tbSlider, String callbackparam) {
+        MyLogeer.info("传来的实体" + tbSlider);
+        return super.toClient(callbackparam, null);
     }
 
 }

@@ -91,7 +91,7 @@ public class SystemOSUtils {
     // K转换M
     private static final long K1M = 1024l;
 
-    private static final Sigar sigar=new Sigar();;
+    private static final Sigar sigar=new Sigar();
 
     static {
         osmxb = (OperatingSystemMXBean) ManagementFactory
@@ -246,7 +246,6 @@ public class SystemOSUtils {
      * JVM内存，内存总量，单位：M
      *
      * @return
-     * @author 董华健 2012-10-9 上午11:24:02
      */
     public static long getJvmTotalMemory() {
         return Runtime.getRuntime().totalMemory() / K2M;
@@ -256,7 +255,6 @@ public class SystemOSUtils {
      * JVM内存，空闲内存量，单位：M
      *
      * @return
-     * @author 董华健 2012-10-9 上午11:24:35
      */
     public static long getJvmFreeMemory() {
         return Runtime.getRuntime().freeMemory() / K2M;
@@ -266,7 +264,6 @@ public class SystemOSUtils {
      * JVM内存，最大内存量，单位：M
      *
      * @return
-     * @author 董华健 2012-10-9 上午11:24:50
      */
     public static long getJvmMaxMemory() {
         return Runtime.getRuntime().maxMemory() / K2M;
@@ -289,7 +286,6 @@ public class SystemOSUtils {
      * 系统线程列表
      *
      * @return
-     * @author 董华健 2012-10-9 上午11:26:39
      */
     public static List<Thread> getJvmThreads() {
         int activeCount = Thread.activeCount();

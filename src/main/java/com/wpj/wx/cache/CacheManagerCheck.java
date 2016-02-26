@@ -13,14 +13,27 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
+/**
+ * The type Cache manager check.
+ */
 @Component
 public class CacheManagerCheck {
 
+	/**
+	 * Cache manager cache manager.
+	 *
+	 * @return the cache manager
+	 */
 	@Bean
 	public CacheManager cacheManager() {
 		return new EhCacheCacheManager(ehCacheCacheManager().getObject());
 	}
 
+	/**
+	 * Eh cache cache manager eh cache manager factory bean.
+	 *
+	 * @return the eh cache manager factory bean
+	 */
 	@Bean
 	public EhCacheManagerFactoryBean ehCacheCacheManager() {
 		EhCacheManagerFactoryBean cmfb = new EhCacheManagerFactoryBean();

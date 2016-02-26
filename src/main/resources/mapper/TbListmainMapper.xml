@@ -6,31 +6,31 @@
   -->
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wpj.wx.dao.TbListmainMapper" >
-  <resultMap id="BaseResultMap" type="com.wpj.wx.daomain.TbListmain" >
-    <!--
-      WARNING - @mbggenerated
-    -->
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="link" property="link" jdbcType="VARCHAR" />
-    <result column="class_name" property="className" jdbcType="VARCHAR" />
-    <result column="date" property="date" jdbcType="TIMESTAMP" />
-    <result column="desc" property="desc" jdbcType="VARCHAR" />
-    <result column="img" property="img" jdbcType="VARCHAR" />
-    <result column="thumb_addition" property="thumbAddition" jdbcType="VARCHAR" />
-    <result column="main_addition" property="mainAddition" jdbcType="VARCHAR" />
-    <result column="list_id" property="listId" jdbcType="INTEGER" />
-    <result column="title"  property="title" jdbcType="VARCHAR"/>
-  </resultMap>
-    <resultMap id="pageMessageMap" type="com.wpj.wx.daomain.TbListmain">
-        <id column="id" property="id" jdbcType="INTEGER" />
-        <id column="id" property="id" jdbcType="INTEGER" />
-        <result column="desc" property="desc" jdbcType="VARCHAR" />
-        <result column="date" property="date" jdbcType="TIMESTAMP" />
+<mapper namespace="com.wpj.wx.dao.TbListmainMapper">
+    <resultMap id="BaseResultMap" type="com.wpj.wx.daomain.TbListmain">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="link" property="link" jdbcType="VARCHAR"/>
+        <result column="class_name" property="className" jdbcType="VARCHAR"/>
+        <result column="date" property="date" jdbcType="TIMESTAMP"/>
+        <result column="desc" property="desc" jdbcType="VARCHAR"/>
+        <result column="img" property="img" jdbcType="VARCHAR"/>
+        <result column="thumb_addition" property="thumbAddition" jdbcType="VARCHAR"/>
+        <result column="main_addition" property="mainAddition" jdbcType="VARCHAR"/>
+        <result column="list_id" property="listId" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
     </resultMap>
-  <resultMap id="DetailResultMap" type="com.wpj.wx.daomain.TbListmain" extends="BaseResultMap">
-  </resultMap>
-  <select id="selectContentMapById" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+    <resultMap id="pageMessageMap" type="com.wpj.wx.daomain.TbListmain">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="desc" property="desc" jdbcType="VARCHAR"/>
+        <result column="date" property="date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <resultMap id="DetailResultMap" type="com.wpj.wx.daomain.TbListmain" extends="BaseResultMap">
+    </resultMap>
+    <select id="selectContentMapById" parameterType="java.lang.Integer" resultType="java.util.HashMap">
     SELECT
     title,
     contents
@@ -38,7 +38,7 @@
     WHERE
     id=#{id,jdbcType=INTEGER}
   </select>
-  <select id="selectAllCount" resultType="java.lang.Integer">
+    <select id="selectAllCount" resultType="java.lang.Integer">
     select count(*)
      FROM
      tb_listmain;
@@ -49,8 +49,15 @@
         `desc`,
         date
         FROM tb_listmain
-         <if test="nowSize!=null and nowSize>=1 ">
-         limit #{nowSize}, #{pageSize};
-         </if>
+        <if test="nowSize!=null and nowSize>=1 ">
+            limit #{nowSize}, #{pageSize};
+        </if>
+    </select>
+    <select id="getByListId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT
+    * FROM
+    tb_listmain  AS  tlm
+    WHERE
+    tlm.list_id=#{listId,jdbcType=INTEGER}
     </select>
 </mapper>

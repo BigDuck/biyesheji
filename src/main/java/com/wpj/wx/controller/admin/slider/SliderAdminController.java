@@ -6,6 +6,7 @@
 
 package com.wpj.wx.controller.admin.slider;
 
+import com.mangofactory.swagger.annotations.ApiIgnore;
 import com.wpj.wx.common.Config;
 import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.util.FileUploadConfiguration;
@@ -34,6 +35,7 @@ import java.io.UnsupportedEncodingException;
  **/
 @Controller
 @RequestMapping(value = "/admin")
+@ApiIgnore
 public class SliderAdminController extends BaseController {
     @Autowired
     private FileUploadConfiguration fileUploaderConfiguration;
