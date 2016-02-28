@@ -41,5 +41,17 @@ public interface ListMainService  extends IService<TbListmain> {
      * @return the list
      */
     List<TbListmain>   findListMainByPage(Page page);
+
+    /**
+     * 获取总数
+     * @return
+     */
     int findCountNo();
+
+    /**
+     * 根据listmain的id获取listmain文章具体内容
+     * @param id
+     * @return
+     */
+    TbListmain getListMainById(int id);
 }

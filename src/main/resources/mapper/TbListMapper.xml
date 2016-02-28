@@ -59,7 +59,7 @@
     lmain.link as lmainlink,
     lmain.class_name as lmainclassName,
     lmain.date as lmaindate,
-    lmain.descs as lmaindesc,
+    lmain.desc as lmaindesc,
     lmain.thumb_addition  as lmainthumb,
     lmain.main_addition lmainmadtion,
     lmain.list_id as lmainlistId,

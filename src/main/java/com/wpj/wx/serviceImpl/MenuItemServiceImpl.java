@@ -4,10 +4,9 @@
  * @Email wpjlovehome@gmail.com
  */
 
-package com.wpj.wx.serviceImpl;
+package com.wpj.wx.serviceimpl;
 
 import com.github.pagehelper.PageHelper;
-import com.wpj.wx.daomain.TbListmain;
 import com.wpj.wx.daomain.TbMenuitem;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.MenuItemService;
@@ -29,16 +28,17 @@ public class MenuItemServiceImpl extends BaseService<TbMenuitem> implements Menu
         Example example = new Example(TbMenuitem.class);
         Example.Criteria criteria = example.createCriteria();
         if (tbMenuitem.getMenuitemId()!=null) {
-            criteria.andEqualTo("menuItem_id",tbMenuitem.getMenuitemId());
+            criteria.andEqualTo("menuitemId",tbMenuitem.getMenuitemId());
         }
         if(tbMenuitem.getMenuId()!=null){
-            criteria.andEqualTo("Menu_id",tbMenuitem.getMenuId());
+            criteria.andEqualTo("menuId",tbMenuitem.getMenuId());
         }
         if(tbMenuitem.getTitle()!=null){
             criteria.andEqualTo("title",tbMenuitem.getTitle());
         }
         //分页查询
         PageHelper.startPage(page, rows);
+
         return selectByExample(example);
     }
 }

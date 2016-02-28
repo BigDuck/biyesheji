@@ -4,9 +4,8 @@
  * @Email wpjlovehome@gmail.com
  */
 
-package com.wpj.wx.serviceImpl;
+package com.wpj.wx.serviceimpl;
 
-import com.wpj.wx.daomain.TbMenu;
 import com.wpj.wx.daomain.TbSlidercontent;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.SliderContentService;

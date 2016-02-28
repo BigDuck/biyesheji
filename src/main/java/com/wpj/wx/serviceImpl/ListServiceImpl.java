@@ -4,7 +4,7 @@
  * @Email wpjlovehome@gmail.com
  */
 
-package com.wpj.wx.serviceImpl;
+package com.wpj.wx.serviceimpl;
 
 import com.wpj.wx.dao.TbListMapper;
 import com.wpj.wx.daomain.TbList;

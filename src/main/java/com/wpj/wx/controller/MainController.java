@@ -32,6 +32,8 @@ public class MainController extends BaseController {
     ListMainService listMainService;
     @Autowired
     SliderService sliderService;
+    @Autowired
+    ListService listService;
     @RequestMapping(value = "/all",
             method = RequestMethod.GET)
     @ResponseBody
@@ -42,8 +44,10 @@ public class MainController extends BaseController {
         // 获取header
         List<Object> result=new ArrayList<>();
         Map<String,Object> param=new HashMap<>();
+        Map<String,Object> header=headerService.findDataMapById(1);
+        param.put("header",(header.get("header")));
         param.put("menu",menuService.findAllMenuMessageById(1));
-        param.put("list",listMainService.findContentMessageById(1));
+        param.put("list",listService.findALlListById(1));
         param.put("slider",sliderService.findAllMenuMessageById(1));
         result.add(param);
         System.out.println("\n\n\n\n\n\n\n\n"+result.toString());

@@ -4,13 +4,17 @@
  * @Email wpjlovehome@gmail.com
  */
 
-package com.wpj.wx.serviceImpl;
+package com.wpj.wx.serviceimpl;
 
 import com.github.pagehelper.PageHelper;
 import com.wpj.wx.dao.TbMenuMapper;
 import com.wpj.wx.daomain.TbMenu;
+import com.wpj.wx.daomain.TbMenuitem;
+import com.wpj.wx.daomain.TbSubmenuitem;
 import com.wpj.wx.service.BaseService;
+import com.wpj.wx.service.MenuItemService;
 import com.wpj.wx.service.MenuService;
+import com.wpj.wx.service.SubMenuItemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,19 +30,34 @@ import java.util.List;
 public class MenuServiceImpl extends BaseService<TbMenu> implements MenuService {
     @Autowired
     TbMenuMapper tbMenuMapper;
+    @Autowired
+    MenuItemService menuItemService;
+    @Autowired
+    SubMenuItemService subMenuItemService;
+
     private Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
     @Override
     public TbMenu findAllMenuMessageById(int menuId) {
+        // 根据菜单的id再去获取子菜单
         TbMenu tbMenu = tbMenuMapper.selectAllMenuMessageById(menuId);
+        TbMenuitem tbMenuitem = new TbMenuitem();
+        tbMenuitem.setMenuId(tbMenu.getMenuId());
+        List<TbMenuitem> menuitem = menuItemService.getMenuByPage(tbMenuitem, 1, 20);
+        logger.info("result:>{}", menuitem);
         for (int j = 0; j < tbMenu.getContent().size(); j++) {
             logger.error("subMenu长度:" + tbMenu.getContent().get(j).getSubMenu().size());
-
-            if (tbMenu.getContent().get(j).getSubMenu().size() == 1) {
+            if (tbMenu.getContent().get(j).getSubMenu().size() < 1) {
                 tbMenu.getContent().get(j).setSubMenu(null);
+            } else {
+                TbSubmenuitem tbSubmenuitem = new TbSubmenuitem();
+                tbSubmenuitem.setMenuitemId(tbMenu.getContent().get(j).getMenuitemId());
+                tbMenu.getContent().get(j).setSubMenu(subMenuItemService.getSubItemByTbSubmenuItem(tbSubmenuitem));
             }
-        }
 
+        }
+       // tbMenu.setContent(menuitem);
+        logger.info("---------->{}", tbMenu);
         return tbMenu;
     }
 

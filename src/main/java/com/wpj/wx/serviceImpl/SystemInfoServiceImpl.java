@@ -4,11 +4,10 @@
  * @Email wpjlovehome@gmail.com
  */
 
-package com.wpj.wx.serviceImpl;
+package com.wpj.wx.serviceimpl;
 
 import com.github.pagehelper.PageHelper;
 import com.wpj.wx.daomain.PageRequest;
-import com.wpj.wx.daomain.TbIplogs;
 import com.wpj.wx.daomain.TbSystemInfo;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.SystemInfoService;

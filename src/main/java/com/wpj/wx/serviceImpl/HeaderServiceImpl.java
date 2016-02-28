@@ -4,7 +4,7 @@
  * @Email wpjlovehome@gmail.com
  */
 
-package com.wpj.wx.serviceImpl;
+package com.wpj.wx.serviceimpl;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -141,13 +141,12 @@ public class HeaderServiceImpl extends BaseService<TbHeader> implements HeaderSe
             content.put("right",listRight);
         }
         content.put("title", tbHeader.getTitle());
-
         //header
         Map<String, Object> header = new HashMap<>();
         header.put("content", content);
-        if(tbHeader.getClassId()!=null){
-            header.put("className", tbHeader.getLeftClassName());
-        }
+//        if(tbHeader.getLeftClassName()!=null){
+//            header.put("className", tbHeader.getLeftClassName());
+//        }
         if(tbHeader.getTheme()!=null){
             header.put("theme", tbHeader.getTheme());
         }
@@ -159,6 +158,8 @@ public class HeaderServiceImpl extends BaseService<TbHeader> implements HeaderSe
             header.put("options",options);
 
         }
+
+
         data.put("header", header);
         return data;
     }
