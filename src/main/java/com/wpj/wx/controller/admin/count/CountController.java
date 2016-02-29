@@ -9,6 +9,7 @@ package com.wpj.wx.controller.admin.count;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.Authorization;
+import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.common.Config;
 import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.daomain.TbRemote;
@@ -46,6 +47,7 @@ public class CountController extends BaseController {
     }
     @RequestMapping(value = "/count/getCount",method = RequestMethod.POST)
     @ResponseBody
+    @Procedure(description = "访问运维统计")
     public Object getCount(HttpServletRequest request){
         Date startTime=DateUtil.getYesterday(new Date(),true,7);
         Date endTime=new Date();

@@ -18,6 +18,7 @@ import com.wpj.wx.service.SubMenuItemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
@@ -38,6 +39,7 @@ public class MenuServiceImpl extends BaseService<TbMenu> implements MenuService 
     private Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
     @Override
+    @Cacheable(value = "myCache",key = "'mmsg'+#menuId")
     public TbMenu findAllMenuMessageById(int menuId) {
         // 根据菜单的id再去获取子菜单
         TbMenu tbMenu = tbMenuMapper.selectAllMenuMessageById(menuId);

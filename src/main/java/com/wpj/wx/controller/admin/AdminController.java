@@ -38,11 +38,12 @@ public class AdminController extends BaseController {
         return "admin/index";
     }
     @RequestMapping(value = "/main/header",method = RequestMethod.POST)
-    public String updateHeader (ModelMap map,@ModelAttribute("header")@Valid TbHeader header){
+    public String updateHeader (ModelMap map,@ModelAttribute("header") TbHeader header){
         MyLogeer.info("前台："+header.toString());
         map.addAttribute("MyTemplate","admin/module/headerContent.vm");
         return "admin/index";
     }
+
 
 
 }

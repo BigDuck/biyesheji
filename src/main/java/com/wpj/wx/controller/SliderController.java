@@ -9,6 +9,7 @@ package com.wpj.wx.controller;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
+import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.daomain.BaseResult;
 import com.wpj.wx.daomain.TbSlider;
@@ -39,6 +40,7 @@ public class SliderController extends BaseController {
     @RequestMapping("/slider/{id}")
     @ResponseBody
     @ApiOperation(value = "获取轮播信息", httpMethod = "GET", notes = "根据轮播id获取轮播的信息", response = BaseResult.class)
+    @Procedure(description = "获取轮播信息")
     public Object getSlider(@ApiParam(name = "id", required = true, value = "轮播Id")
                             @PathVariable("id") int id, String callbackparam) {
         Map<String, Object> map = new HashMap<>();

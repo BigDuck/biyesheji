@@ -14,5 +14,5 @@ import java.io.Serializable;
  * Created by WPJ587 on 2015/10/8.
  */
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)//自动忽略空字段
-public class BaseDaomain implements Serializable {
+public class BaseDamain implements Serializable {
 }

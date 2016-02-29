@@ -7,6 +7,7 @@
 package com.wpj.wx.controller;
 
 import com.wordnik.swagger.annotations.Api;
+import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,7 @@ public class MainController extends BaseController {
     @RequestMapping(value = "/all",
             method = RequestMethod.GET)
     @ResponseBody
+    @Procedure(description = "获取整体数据")
     public Object getMainUIMessage(String callbackparam) {
 //        for(Map.Entry<String,Object> entry:map.entrySet()){
 //            MyLogeer.info(MYTAG,"key="+entry.getKey()+"\n "+"value="+entry.getValue());

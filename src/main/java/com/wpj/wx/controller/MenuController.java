@@ -9,6 +9,7 @@ package com.wpj.wx.controller;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
+import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.daomain.BaseResult;
 import com.wpj.wx.daomain.TbMenu;
@@ -41,6 +42,7 @@ public class MenuController extends BaseController {
     @RequestMapping(value = "/menu/{id}")
     @ApiOperation(value = "获取菜单信息", httpMethod = "GET",
             notes = "根据菜单id获取菜单的信息", response = BaseResult.class)
+    @Procedure(description = "根据菜单id来取数据")
     public final Object getMenuById(
             @ApiParam(name = "id", required = true, value = "菜单Id")
                                     @PathVariable("id")final int id,

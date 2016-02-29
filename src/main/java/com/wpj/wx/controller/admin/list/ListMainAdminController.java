@@ -44,6 +44,7 @@ public class ListMainAdminController extends BaseController {
      * @see --对列表数据的展示
      */
     @RequestMapping(value = "/main/list")
+    @Procedure(description = "admin的菜单menu")
     public String menuMain(ModelMap map,
                            @RequestParam(required = false, defaultValue = "1") int page,
                            @RequestParam(required = false, defaultValue = "10") int rows
@@ -73,6 +74,7 @@ public class ListMainAdminController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/main/list/{listId}")
+    @Procedure(description = "访问list的相信内容")
     public String detailPage(@PathVariable(value = "listId") int listId,
                              @RequestParam(value = "type",required = false)String type,
                              ModelMap map) {
@@ -139,6 +141,7 @@ public class ListMainAdminController extends BaseController {
      */
     @RequestMapping(value = "/delete")
     @ResponseBody
+    @Procedure(description = "删除menu")
     public String deleteById(int id){
         MyLogeer.info("id:{}",id);
         try {

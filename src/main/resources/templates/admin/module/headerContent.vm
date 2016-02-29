@@ -24,7 +24,7 @@
     </div>
     <div class="am-g">
         <div class="am-u-sm-8">
-            <form class="am-form">
+            <form class="am-form" action="../main/header" method="post">
                 <fieldset>
 
                     <legend>网站标题信息</legend>
@@ -37,16 +37,12 @@
                 ##网站标题动画开始
                     <div class="am-form-group">
                         <label for="title-anima">标题动画</label>
-                      <input type="text" id="title-anima" value="
-                      #if($header.classId)$header.classId#end
-
-                      ">
+                      <input type="text" id="title-anima" name="classId" value="#if($header.classId)$header.classId#end">
                     </div>
                 ##网站标题结束
                     <div class="am-form-group">
                         <label for="web-theme">网站主题</label>
-                        <input type="text" class=""  id="web-theme" name="theme" value="
-                        #if($header.theme)$header.theme#end" placeholder="请填写网站主题" maxlength="15">
+                        <input type="text" class=""  id="web-theme" name="theme" value="#if($header.theme)$header.theme#end" placeholder="请填写网站主题" maxlength="15">
                     </div>
                     <div class="am-form-group">
                         <label for="title-anima">固定标题</label>
@@ -63,32 +59,30 @@
                     </div>
                     ##左边菜单开始
                     <div class="am-form-group">
-                    <div class="am-panel-group" id="accordion">
-                        <div class="am-panel am-panel-primary">
-                            <div class="am-panel-hd">
-                                <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}"> <div class="am-panel-hd">左边菜单</div></h4>
-                            </div>
-                            <div id="do-not-say-3" class="am-panel-collapse am-collapse">
-                                <div class="am-panel-bd" id="leftMenu">
-                                    #if(!($null.isNull($header.leftLink)))
-                                        <input type="checkbox" id="leftCheck" onchange="checkChange()"  checked/> 启用
-                                        <div id="leftDiv">
-                                            <label>菜单名字:</label>
-                                            <input  type="text"  name="leftTitle"  value="$header.leftTitle" class="am-form-field am-round" />
-                                            <label>菜单链接:</label>
-                                            <input  type="text"  name="leftLink"  value="$header.leftLink" class="am-form-field am-round" />
-                                            <label>菜单图标:</label>
-                                            <input  type="text"  name="leftIcon"  value="$header.leftIcon" class="am-form-field am-round" />
-                                            <label>菜单动画:</label>
-                                            <input  type="text"  name="leftClassName"  value="$header.leftClassName" class="am-form-field am-round" />
-                                        </div>
-                                    #else
-                                        <input type="checkbox"/> 启用
-                                    #end
-                                </div>
+                    <div class="am-panel-group" id="accordion"><div class="am-panel am-panel-primary">
+                        <div class="am-panel-hd">
+                            <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}"> <div class="am-panel-hd">左边菜单</div></h4>
+                        </div>
+                        <div id="do-not-say-3" class="am-panel-collapse am-collapse">
+                            <div class="am-panel-bd" id="leftMenu">
+                                #if(!($null.isNull($header.leftLink)))
+                                    <input type="checkbox" id="leftCheck" onchange="checkChange()"  checked/> 启用
+                                    <div id="leftDiv">
+                                        <label>菜单名字:</label>
+                                        <input  type="text"  name="leftTitle"  value="#if($header.leftTitle)$header.leftTitle#end" class="am-form-field am-round" />
+                                        <label>菜单链接:</label>
+                                        <input  type="text"  name="leftLink"  value="#if($header.leftLink)$header.leftLink#end" class="am-form-field am-round" />
+                                        <label>菜单图标:</label>
+                                        <input  type="text"  name="leftIcon"  value="#if($header.leftIcon)$header.leftIcon#end" class="am-form-field am-round" />
+                                        <label>菜单动画:</label>
+                                        <input  type="text"  name="leftClassName"  value="#if($header.leftClassName)$header.leftClassName#end" class="am-form-field am-round" />
+                                    </div>
+                                #else
+                                    <input type="checkbox"/> 启用
+                                #end
                             </div>
                         </div>
-                    </div>
+                    </div></div>
 
                     </div>
                     ##左边菜单结束
@@ -105,13 +99,13 @@
                                             <input type="checkbox" id="rightCheck" onchange="rightChange()"  checked/> 启用
                                             <div id="rightDiv">
                                                 <label>菜单名字:</label>
-                                                <input  type="text"  name="rightTitle"  value="$header.rightTitle" class="am-form-field am-round" />
+                                                <input  type="text"  name="rightTitle"  value="#if($header.rightTitle)$header.rightTitle#end" class="am-form-field am-round" />
                                                 <label>菜单链接:</label>
-                                                <input  type="text"  name="rightLink"  value="$header.rightLink" class="am-form-field am-round" />
+                                                <input  type="text"  name="rightLink"  value="#if($header.rightLink)$header.rightLink#end" class="am-form-field am-round" />
                                                 <label>菜单图标:</label>
-                                                <input  type="text"  name="rightIcon"  value="$header.rightIcon" class="am-form-field am-round" />
+                                                <input  type="text"  name="rightIcon"  value="#if($header.rightIcon)$header.rightIcon#end" class="am-form-field am-round" />
                                                 <label>菜单动画:</label>
-                                                <input  type="text"  name="rightClassName"  value="$header.rightClassName" class="am-form-field am-round" />
+                                                <input  type="text"  name="rightClassName"  value="#if($header.rightClassName)$header.rightClassName#end" class="am-form-field am-round" />
                                             </div>
                                         #else
                                             <input type="checkbox"/> 启用

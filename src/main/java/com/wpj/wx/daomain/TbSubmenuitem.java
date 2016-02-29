@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Table(name = "tb_submenuitem")
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)//自动忽略空字段
-public class TbSubmenuitem {
+public class TbSubmenuitem extends BaseDamain{
     @Id
     @Column(name = "Sub_id")
     @JsonIgnore

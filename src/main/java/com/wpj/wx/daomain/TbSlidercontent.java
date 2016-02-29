@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "tb_slidercontent")
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)//自动忽略空字段
 
-public class TbSlidercontent {
+public class TbSlidercontent extends BaseDamain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore

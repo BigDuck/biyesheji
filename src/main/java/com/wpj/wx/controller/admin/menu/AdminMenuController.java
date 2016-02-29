@@ -7,6 +7,7 @@
 package com.wpj.wx.controller.admin.menu;
 
 import com.mangofactory.swagger.annotations.ApiIgnore;
+import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.daomain.TbMenu;
 import com.wpj.wx.daomain.TbMenuitem;
 import com.wpj.wx.service.MenuItemService;
@@ -34,6 +35,7 @@ public class AdminMenuController {
     MenuItemService menuItemService;
 
     @RequestMapping("/menu")
+    @Procedure(description = "访问mune")
     public Object toMenu(ModelMap map){
         map.addAttribute("MyTemplate", "admin/menu/menu.vm");
         List<TbMenu> allMenu=menuService.getMenuByPage(new TbMenu(),1,10);

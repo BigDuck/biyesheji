@@ -7,7 +7,11 @@
 package com.wpj.wx.controller;
 
 import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
+import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.controller.common.BaseController;
+import com.wpj.wx.daomain.BaseResult;
 import com.wpj.wx.service.ListMainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,8 +33,10 @@ public class ListMainController extends BaseController {
     ListMainService listMainService;
 
     @RequestMapping(value = "/id",method = RequestMethod.GET)
-    public Object getListMainById(@RequestParam(value = "id",required = true)Integer id, String callbackparam){
-
+    @ApiOperation(value = "获取文章信息", httpMethod = "GET", notes ="根据文章id获取文章内容",response = BaseResult.class)
+    @Procedure(description = "获取文章详情")
+    public Object getListMainById(@ApiParam(name = "id",value = "根据id获取文章信息",required = true)
+                                      @RequestParam(value = "id",required = true)Integer id, String callbackparam){
         return super.toClient(callbackparam,listMainService.getListMainById(id));
     }
 }

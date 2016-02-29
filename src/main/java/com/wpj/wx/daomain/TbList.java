@@ -9,7 +9,7 @@ import java.util.List;
 
 @Table(name = "tb_list")
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)//自动忽略空字段
-public class TbList {
+public class TbList extends BaseDamain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore

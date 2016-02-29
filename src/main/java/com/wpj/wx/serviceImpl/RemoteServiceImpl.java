@@ -23,7 +23,9 @@ import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.RemoteService;
 import com.wpj.wx.util.DateUtil;
 import com.wpj.wx.util.StringUtils;
+import org.hibernate.annotations.Cache;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -49,6 +51,7 @@ public class RemoteServiceImpl extends BaseService<TbRemote> implements RemoteSe
      */
 
     @Override
+    @Cacheable(value = "myCache",key = "'remomte'+#startTime+#endTime")
     public List<TbRemote> findRemotebList(Date startTime, Date endTime, String ipAddress) {
         Map<String,Object> paramsMap=new HashMap<>();
 
@@ -73,6 +76,7 @@ public class RemoteServiceImpl extends BaseService<TbRemote> implements RemoteSe
      * @return
      */
     @Override
+    @Cacheable(value = "myCache",key = "'TbRemote'+#startTime+#endTime+#ip")
     public String toEchartData(List<TbRemote> remotes,Date startTime,Date endTime,String ip) {
         logger.info("---->{}",remotes);
         Option myOption=new Option();

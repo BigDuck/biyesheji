@@ -9,10 +9,12 @@ package com.wpj.wx.controller;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
+import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.daomain.BaseResult;
 import com.wpj.wx.serviceimpl.ListServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,11 +33,11 @@ public class ListController extends BaseController {
     ListServiceImpl listService;
     @RequestMapping("/list/{id}")
     @ApiOperation(value = "获取列表信息", httpMethod = "GET", notes = "根据列表id获取列表的信息",response = BaseResult.class)
+    @Procedure(description = "访问获列表取信息")
     public Object getAll(@ApiParam(name = "id",required = true,value = "列表Id")@PathVariable("id")int  id, String callbackparam){
         Map<String,Object> map=new HashMap<>();
         map.put("list",listService.selectByKey(id));
         return super.toClient(callbackparam,map);
     }
-
 
 }

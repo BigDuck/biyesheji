@@ -10,6 +10,7 @@ import com.github.pagehelper.PageHelper;
 import com.wpj.wx.daomain.TbMenuitem;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.MenuItemService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
@@ -24,6 +25,7 @@ import java.util.List;
 @Service
 public class MenuItemServiceImpl extends BaseService<TbMenuitem> implements MenuItemService {
     @Override
+    @Cacheable(value = "myCache",key = "'menuitem'+#page+'-'+#rows")
     public List<TbMenuitem> getMenuByPage(TbMenuitem tbMenuitem, int page, int rows) {
         Example example = new Example(TbMenuitem.class);
         Example.Criteria criteria = example.createCriteria();

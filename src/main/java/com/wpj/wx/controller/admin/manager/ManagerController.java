@@ -47,6 +47,7 @@ public class ManagerController extends BaseController {
     SystemInfoService systemInfoService;
 
     @RequestMapping("/iplist")
+    @Procedure(description = "访问ip列表")
     public Object ipLog(ModelMap map, PageRequest pageRequest
     ) {
 

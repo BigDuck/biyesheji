@@ -15,7 +15,7 @@ import java.util.Date;
  * description：分页请求参数
  **/
 
-public class PageRequest {
+public class PageRequest  extends BaseDamain {
     /**
      * 页号
      */

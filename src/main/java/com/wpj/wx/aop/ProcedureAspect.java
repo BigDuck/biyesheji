@@ -9,6 +9,7 @@ package com.wpj.wx.aop;
 import com.google.common.base.Strings;
 import com.wpj.wx.daomain.TbIplogs;
 import com.wpj.wx.service.IpLogService;
+import com.wpj.wx.util.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -71,8 +72,8 @@ private Logger logger= LoggerFactory.getLogger(ProcedureAspect.class);
 		logger.info("请求方法:" + (joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()"));
 		StringBuffer params=new StringBuffer();
 		for (Object o:joinPoint.getArgs()){
-			if(!Strings.isNullOrEmpty(o+"")){
-				params.append("-"+o.toString());
+			if(StringUtils.isNoneEmtryAndNull(o)){
+				params.append("-"+o);
 			}
 			logger.info("参数:{}",o);
 		}
@@ -118,7 +119,8 @@ private Logger logger= LoggerFactory.getLogger(ProcedureAspect.class);
 		Object[] args;
 		try {
 			args = pjp.getArgs();
-			System.out.println(args == null ? pjp.proceed() : pjp.proceed(args));
+			Object obj = pjp.proceed();
+			System.out.println(obj);
 			return args == null ? pjp.proceed() : pjp.proceed(args);
 		} catch (Throwable e) {
 			logger.info("Aspect :: handleException");

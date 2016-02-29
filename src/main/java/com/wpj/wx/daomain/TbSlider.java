@@ -8,7 +8,7 @@ import java.util.List;
 
 @Table(name = "tb_slider")
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)//自动忽略空字段
-public class TbSlider {
+public class TbSlider  extends BaseDamain{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore

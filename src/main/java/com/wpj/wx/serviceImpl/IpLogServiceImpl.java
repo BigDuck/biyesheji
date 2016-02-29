@@ -13,6 +13,7 @@ import com.wpj.wx.daomain.TbIplogs;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.IpLogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
@@ -29,6 +30,7 @@ public class IpLogServiceImpl extends BaseService<TbIplogs> implements IpLogServ
     @Autowired
     TbIplogsMapper tbIplogsMapper;
     @Override
+    @Cacheable(value = "myCache",key ="#tbIplogs")
     public List<TbIplogs> selectByListmain(TbIplogs tbIplogs, PageRequest pageRequest) {
         Example example = new Example(TbIplogs.class);
         Example.Criteria criteria = example.createCriteria();

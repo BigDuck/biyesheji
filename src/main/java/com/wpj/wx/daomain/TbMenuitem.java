@@ -7,7 +7,6 @@
 package com.wpj.wx.daomain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
@@ -15,7 +14,7 @@ import java.util.List;
 
 @Table(name = "tb_menuitem")
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)//自动忽略空字段
-public class TbMenuitem {
+public class TbMenuitem  extends BaseDamain {
     @Id
     @Column(name = "menuItem_id")
     @JsonIgnore

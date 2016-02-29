@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Table(name = "tb_listmain")
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)//自动忽略空字段
-public class TbListmain {
+public class TbListmain extends BaseDamain {
     @Id
     @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)

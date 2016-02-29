@@ -14,7 +14,7 @@ import java.util.Map;
 
 @Table(name = "tb_menu")
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)//自动忽略空字段
-public class TbMenu {
+public class TbMenu extends BaseDamain{
     @Id
     @Column(name = "Menu_Id")
     @JsonIgnore

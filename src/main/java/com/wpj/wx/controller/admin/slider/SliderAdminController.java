@@ -7,6 +7,7 @@
 package com.wpj.wx.controller.admin.slider;
 
 import com.mangofactory.swagger.annotations.ApiIgnore;
+import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.common.Config;
 import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.util.FileUploadConfiguration;
@@ -40,6 +41,7 @@ public class SliderAdminController extends BaseController {
     @Autowired
     private FileUploadConfiguration fileUploaderConfiguration;
     @RequestMapping(value = {"/slider"})
+    @Procedure(description = "访问轮播")
     public String toSlider(ModelMap map){
         MyLogeer.info("访问slider");
         map.addAttribute("MyTemplate","admin/module/slider/sliderIndex.vm");
@@ -53,6 +55,7 @@ public class SliderAdminController extends BaseController {
     }
     @RequestMapping("/slider/upload")
     @ResponseBody
+    @Procedure(description = "上传")
     public String upload(@RequestParam(value = "file", required = false) MultipartFile file,
                          HttpServletRequest request, ModelMap model){
         String fileName = FileUploadHelper.getUniqueName(file.getOriginalFilename());

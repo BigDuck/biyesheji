@@ -6,6 +6,8 @@
 
 package com.wpj.wx.cache;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
@@ -18,7 +20,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class CacheManagerCheck {
-
+private Logger logger= LoggerFactory.getLogger(CacheManagerCheck.class);
 	/**
 	 * Cache manager cache manager.
 	 *
@@ -39,6 +41,7 @@ public class CacheManagerCheck {
 		EhCacheManagerFactoryBean cmfb = new EhCacheManagerFactoryBean();
 		cmfb.setConfigLocation(new ClassPathResource("ehcache.xml"));
 		cmfb.setShared(true);
+		logger.info("ehcache缓存加载完成");
 		return cmfb;
 	}
 

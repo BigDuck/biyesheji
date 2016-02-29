@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 
 @Table(name = "tb_header")
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)//自动忽略空字段
-public class TbHeader extends BaseDaomain {
+public class TbHeader extends BaseDamain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
