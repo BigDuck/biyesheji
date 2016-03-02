@@ -21,7 +21,8 @@ import java.util.List;
 public abstract class BaseService<T> implements IService<T> {
     @Autowired
     protected Mapper<T> mapper;
-    protected Logger logger= LoggerFactory.getLogger(this.getClass());
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Override
     public T selectByKey(Object key) {
 
@@ -48,6 +49,11 @@ public abstract class BaseService<T> implements IService<T> {
         return mapper.selectByExample(example);
     }
 
+    public List<T> selectAll() {
+        return mapper.selectAll();
+    }
+
+    ;
 
     //TODO 其他...
 }

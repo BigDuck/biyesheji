@@ -7,7 +7,7 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wpj.wx.dao.TbListMapper" >
-  <resultMap id="BaseResultMap" type="com.wpj.wx.daomain.TbList" >
+  <resultMap id="BaseResultMap" type="com.wpj.wx.damain.TbList" >
     <!--
       WARNING - @mbggenerated
     -->
@@ -23,12 +23,13 @@
     <result column="more_text" property="moreText" jdbcType="VARCHAR" />
     <result column="more_position" property="morePosition" jdbcType="VARCHAR" />
   </resultMap>
-  <resultMap id="simpleResultMap" type="com.wpj.wx.daomain.TbList">
+  <resultMap id="simpleResultMap" type="com.wpj.wx.damain.TbList">
     <id column="id" property="list_id" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
   </resultMap>
-  <resultMap id="Allmessage" type="com.wpj.wx.daomain.TbList" extends="BaseResultMap">
-    <collection property="main" ofType="com.wpj.wx.daomain.TbListmain" column="lmainid">
+  <resultMap id="Allmessage" type="com.wpj.wx.damain.TbList" extends="BaseResultMap">
+    <collection property="main" ofType="com.wpj.wx.damain.TbListmain" column="
+    ">
       <id column="lmainid" property="id" jdbcType="INTEGER" />
       <result column="lmainlink" property="link" jdbcType="VARCHAR" />
       <result column="lmainclassName" property="className" jdbcType="VARCHAR" />

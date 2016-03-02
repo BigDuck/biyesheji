@@ -6,7 +6,7 @@
 
 package com.wpj.wx.service;
 
-import com.wpj.wx.daomain.TbSlidercontent;
+import com.wpj.wx.damain.TbSlidercontent;
 
 /**
  * Created by WPJ587 on 2015/10/17.

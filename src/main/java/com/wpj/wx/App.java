@@ -14,13 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -31,6 +31,7 @@ import javax.annotation.Resource;
 @EnableAutoConfiguration
 @EnableScheduling //定时任务
 @EnableSwagger
+@EnableWebSecurity
 public class App  extends WebMvcConfigurerAdapter
 {
     @Autowired
@@ -40,6 +41,7 @@ public class App  extends WebMvcConfigurerAdapter
     public static void main( String[] args )
     {
         SpringApplication.run(App.class, args);
+
     }
 
     @Override
@@ -72,4 +74,19 @@ public class App  extends WebMvcConfigurerAdapter
         );
         return apiInfo;
     }
+
+    /**
+     * 为了启用自己定义的错误处理
+     * @param dispatcherServlet
+     * @return
+     */
+    @Bean
+    public ServletRegistrationBean dispatcherRegistration(DispatcherServlet dispatcherServlet) {
+        ServletRegistrationBean registration = new ServletRegistrationBean(
+                dispatcherServlet);
+        dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
+        return registration;
+    }
+
+
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wpj.wx.dao.TbSliderMapper" >
-  <resultMap id="BaseResultMap" type="com.wpj.wx.daomain.TbSlider" >
+  <resultMap id="BaseResultMap" type="com.wpj.wx.damain.TbSlider" >
     <!--
       WARNING - @mbggenerated
     -->
@@ -11,9 +11,9 @@
     <result column="className" property="classname" jdbcType="VARCHAR" />
     <result column="html_id" property="id" jdbcType="VARCHAR" />
   </resultMap>
-<resultMap id="AllMenuMessage" type="com.wpj.wx.daomain.TbSlider" extends="BaseResultMap">
+<resultMap id="AllMenuMessage" type="com.wpj.wx.damain.TbSlider" extends="BaseResultMap">
 
-  <collection property="content" ofType="com.wpj.wx.daomain.TbSlidercontent">
+  <collection property="content" ofType="com.wpj.wx.damain.TbSlidercontent">
     <id column="c_id" property="id" jdbcType="INTEGER" />
     <result column="c_link" property="link" jdbcType="VARCHAR" />
     <result column="c_img" property="img" jdbcType="VARCHAR" />

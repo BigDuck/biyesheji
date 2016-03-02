@@ -7,7 +7,7 @@
 package com.wpj.wx.controller.common;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.wpj.wx.daomain.TbRemote;
+import com.wpj.wx.damain.TbRemote;
 import com.wpj.wx.service.RemoteService;
 import com.wpj.wx.util.InternetProtocol;
 import org.slf4j.Logger;

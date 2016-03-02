@@ -6,7 +6,7 @@
 
 package com.wpj.wx;
 
-import com.wpj.wx.daomain.TbRemote;
+import com.wpj.wx.damain.TbRemote;
 import com.wpj.wx.service.RemoteService;
 import com.wpj.wx.util.DateUtil;
 import org.junit.Test;

@@ -9,7 +9,7 @@ package com.wpj.wx.serviceimpl;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import com.wpj.wx.dao.TbHeaderMapper;
-import com.wpj.wx.daomain.TbHeader;
+import com.wpj.wx.damain.TbHeader;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.HeaderService;
 import org.slf4j.Logger;

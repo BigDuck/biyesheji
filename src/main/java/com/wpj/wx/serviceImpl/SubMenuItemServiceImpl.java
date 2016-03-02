@@ -6,9 +6,10 @@
 
 package com.wpj.wx.serviceimpl;
 
-import com.wpj.wx.daomain.TbSubmenuitem;
+import com.wpj.wx.damain.TbSubmenuitem;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.SubMenuItemService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
@@ -29,6 +30,7 @@ public class SubMenuItemServiceImpl extends BaseService<TbSubmenuitem> implement
      * @return
      */
     @Override
+    @Cacheable(value = "myCache",key = "#tbSubmenuitem")
     public List<TbSubmenuitem> getSubItemByTbSubmenuItem(TbSubmenuitem tbSubmenuitem) {
         Example example = new Example(TbSubmenuitem.class);
         Example.Criteria criteria = example.createCriteria();

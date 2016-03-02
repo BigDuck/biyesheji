@@ -7,7 +7,7 @@
 package com.wpj.wx.service;
 
 import com.wpj.wx.common.Page;
-import com.wpj.wx.daomain.TbListmain;
+import com.wpj.wx.damain.TbListmain;
 
 import java.util.List;
 import java.util.Map;

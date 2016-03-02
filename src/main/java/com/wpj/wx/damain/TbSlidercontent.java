@@ -1,4 +1,4 @@
-package com.wpj.wx.daomain;
+package com.wpj.wx.damain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

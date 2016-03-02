@@ -7,8 +7,8 @@
 package com.wpj.wx.serviceimpl;
 
 import com.github.pagehelper.PageHelper;
-import com.wpj.wx.daomain.PageRequest;
-import com.wpj.wx.daomain.TbSystemInfo;
+import com.wpj.wx.damain.PageRequest;
+import com.wpj.wx.damain.TbSystemInfo;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.SystemInfoService;
 import org.springframework.cache.annotation.Cacheable;

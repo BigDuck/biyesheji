@@ -7,7 +7,7 @@
 package com.wpj.wx.dao;
 
 
-import com.wpj.wx.daomain.TbHeader;
+import com.wpj.wx.damain.TbHeader;
 import com.wpj.wx.util.MyMapper;
 
 public interface TbHeaderMapper extends MyMapper<TbHeader> {

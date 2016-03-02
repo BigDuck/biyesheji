@@ -7,7 +7,7 @@
 package com.wpj.wx.service;
 
 
-import com.wpj.wx.daomain.TbMenuitem;
+import com.wpj.wx.damain.TbMenuitem;
 
 import java.util.List;
 

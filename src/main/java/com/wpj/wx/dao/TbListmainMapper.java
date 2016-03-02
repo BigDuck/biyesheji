@@ -1,11 +1,9 @@
 package com.wpj.wx.dao;
 
 import com.wpj.wx.common.Page;
-import com.wpj.wx.daomain.TbListmain;
+import com.wpj.wx.damain.TbListmain;
 import com.wpj.wx.util.MyMapper;
-import tk.mybatis.mapper.common.Mapper;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

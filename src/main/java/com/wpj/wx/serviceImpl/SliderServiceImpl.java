@@ -7,10 +7,11 @@
 package com.wpj.wx.serviceimpl;
 
 import com.wpj.wx.dao.TbSliderMapper;
-import com.wpj.wx.daomain.TbSlider;
+import com.wpj.wx.damain.TbSlider;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.SliderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,6 +24,7 @@ public class SliderServiceImpl extends BaseService<TbSlider> implements SliderSe
 
 
     @Override
+    @Cacheable(value = "myCache",key = "'tbslider'+#id")
     public TbSlider findAllMenuMessageById(int id) {
         TbSlider tbSlider=tbSliderMapper.selectAllMenuMessageById(id);
 //        System.out.println("----》"+tbSlider.getContent().size());

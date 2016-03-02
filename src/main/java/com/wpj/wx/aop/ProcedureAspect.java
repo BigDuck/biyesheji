@@ -6,8 +6,7 @@
 
 package com.wpj.wx.aop;
 
-import com.google.common.base.Strings;
-import com.wpj.wx.daomain.TbIplogs;
+import com.wpj.wx.damain.TbIplogs;
 import com.wpj.wx.service.IpLogService;
 import com.wpj.wx.util.StringUtils;
 import org.aspectj.lang.JoinPoint;
@@ -26,7 +25,6 @@ import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Map;
 import java.util.UUID;
 
 /**

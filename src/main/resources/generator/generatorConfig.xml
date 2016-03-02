@@ -55,9 +55,10 @@
         <!--<table tableName="%" >-->
         <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
         <!--</table>-->
-        <table tableName="tb_remote">
+        <table tableName="s_role">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
+
 
         <!--<table tableName="tb_listmain">-->
             <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->

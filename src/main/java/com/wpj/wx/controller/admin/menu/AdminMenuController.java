@@ -8,8 +8,8 @@ package com.wpj.wx.controller.admin.menu;
 
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import com.wpj.wx.aop.Procedure;
-import com.wpj.wx.daomain.TbMenu;
-import com.wpj.wx.daomain.TbMenuitem;
+import com.wpj.wx.damain.TbMenu;
+import com.wpj.wx.damain.TbMenuitem;
 import com.wpj.wx.service.MenuItemService;
 import com.wpj.wx.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;

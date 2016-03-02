@@ -9,6 +9,7 @@ package com.wpj.wx.controller;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Name：IndexController
@@ -22,5 +23,9 @@ public class IndexController {
     @RequestMapping(value = {"","/index"})
     public Object index(){
     return "index";
-}
+    }
+    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    public Object login(){
+        return "login";
+    }
 }
