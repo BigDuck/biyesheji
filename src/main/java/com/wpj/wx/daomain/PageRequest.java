@@ -4,7 +4,7 @@
  * @Email wpjlovehome@gmail.com
  */
 
-package com.wpj.wx.damain;
+package com.wpj.wx.daomain;
 
 import java.util.Date;
 
@@ -31,7 +31,7 @@ public class PageRequest  extends BaseDamain {
     /**
      * 结束时间 用于时间范围查询
      */
-    private Date endTime=new Date();
+    private Date endTime;
 
     public int getPage() {
         return page;

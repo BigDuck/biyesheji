@@ -7,7 +7,7 @@
 package com.wpj.wx.service;
 
 
-import com.wpj.wx.damain.SUser;
+import com.wpj.wx.daomain.SUser;
 
 import java.util.List;
 

@@ -7,7 +7,7 @@
 package com.wpj.wx.serviceimpl;
 
 import com.wpj.wx.dao.TbListMapper;
-import com.wpj.wx.damain.TbList;
+import com.wpj.wx.daomain.TbList;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.ListService;
 import org.slf4j.Logger;
@@ -40,7 +40,7 @@ public class ListServiceImpl extends BaseService<TbList> implements ListService 
      * @return
      */
     @Override
-    @Cacheable(key = "simpleMsg",value = "myCache")
+    @Cacheable(key = "'simple'",value = "myCache")
     public List<TbList> findSimpleMessage() {
         return tbListMapper.selectSimpleMessage();
     }

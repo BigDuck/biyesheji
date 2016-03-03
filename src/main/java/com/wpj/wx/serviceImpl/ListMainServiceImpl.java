@@ -9,7 +9,7 @@ package com.wpj.wx.serviceimpl;
 import com.github.pagehelper.PageHelper;
 import com.wpj.wx.common.Page;
 import com.wpj.wx.dao.TbListmainMapper;
-import com.wpj.wx.damain.TbListmain;
+import com.wpj.wx.daomain.TbListmain;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.ListMainService;
 import org.springframework.beans.factory.annotation.Autowired;

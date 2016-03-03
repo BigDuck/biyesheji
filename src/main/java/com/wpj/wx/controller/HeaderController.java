@@ -11,12 +11,11 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.controller.common.BaseController;
-import com.wpj.wx.damain.BaseResult;
+import com.wpj.wx.daomain.BaseResult;
 import com.wpj.wx.serviceimpl.HeaderServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,7 +46,6 @@ public class HeaderController extends BaseController {
     @ResponseBody
     @ApiOperation(value = "根据id编号获取网站标题信息",notes = "获取标题", httpMethod="GET",response = BaseResult.class)
     @Procedure(description = "获取网站标题")
-    @PreAuthorize("")
     public Object getHeader(@ApiParam(required = true, name = "headerId", value = "headerId id Integer")
                                 @PathVariable("headerId")int headerId,
                             String callbackparam, HttpServletRequest request){

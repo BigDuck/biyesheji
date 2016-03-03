@@ -7,7 +7,7 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wpj.wx.dao.TbListmainMapper">
-    <resultMap id="BaseResultMap" type="com.wpj.wx.damain.TbListmain">
+    <resultMap id="BaseResultMap" type="com.wpj.wx.daomain.TbListmain">
         <!--
           WARNING - @mbggenerated
         -->
@@ -22,13 +22,13 @@
         <result column="list_id" property="listId" jdbcType="INTEGER"/>
         <result column="title" property="title" jdbcType="VARCHAR"/>
     </resultMap>
-    <resultMap id="pageMessageMap" type="com.wpj.wx.damain.TbListmain">
+    <resultMap id="pageMessageMap" type="com.wpj.wx.daomain.TbListmain">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="desc" property="desc" jdbcType="VARCHAR"/>
         <result column="date" property="date" jdbcType="TIMESTAMP"/>
     </resultMap>
-    <resultMap id="DetailResultMap" type="com.wpj.wx.damain.TbListmain" extends="BaseResultMap">
+    <resultMap id="DetailResultMap" type="com.wpj.wx.daomain.TbListmain" extends="BaseResultMap">
     </resultMap>
     <select id="selectContentMapById" parameterType="java.lang.Integer" resultType="java.util.HashMap">
     SELECT

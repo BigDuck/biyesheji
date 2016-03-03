@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wpj.wx.dao.TbMenuitemMapper" >
-  <resultMap id="BaseResultMap" type="com.wpj.wx.damain.TbMenuitem" >
+  <resultMap id="BaseResultMap" type="com.wpj.wx.daomain.TbMenuitem" >
     <!--
       WARNING - @mbggenerated
     -->
@@ -11,6 +11,6 @@
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="subCols" property="subCols" jdbcType="INTEGER" />
   </resultMap>
-  <resultMap id="AllMessageMap" extends="BaseResultMap" type="com.wpj.wx.damain.TbMenuitem">
+  <resultMap id="AllMessageMap" extends="BaseResultMap" type="com.wpj.wx.daomain.TbMenuitem">
   </resultMap>
 </mapper>

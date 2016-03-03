@@ -7,8 +7,8 @@
 package com.wpj.wx;
 
 import com.wpj.wx.dao.TbListmainMapper;
-import com.wpj.wx.damain.TbList;
-import com.wpj.wx.damain.TbListmain;
+import com.wpj.wx.daomain.TbList;
+import com.wpj.wx.daomain.TbListmain;
 import com.wpj.wx.serviceimpl.ListServiceImpl;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

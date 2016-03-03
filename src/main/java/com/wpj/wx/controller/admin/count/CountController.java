@@ -10,7 +10,7 @@ import com.mangofactory.swagger.annotations.ApiIgnore;
 import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.common.Config;
 import com.wpj.wx.controller.common.BaseController;
-import com.wpj.wx.damain.TbRemote;
+import com.wpj.wx.daomain.TbRemote;
 import com.wpj.wx.service.RemoteService;
 import com.wpj.wx.util.DateUtil;
 import com.wpj.wx.util.StringUtils;

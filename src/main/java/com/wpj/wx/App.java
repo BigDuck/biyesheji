@@ -19,7 +19,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -31,7 +30,6 @@ import javax.annotation.Resource;
 @EnableAutoConfiguration
 @EnableScheduling //定时任务
 @EnableSwagger
-@EnableWebSecurity
 public class App  extends WebMvcConfigurerAdapter
 {
     @Autowired
@@ -40,9 +38,9 @@ public class App  extends WebMvcConfigurerAdapter
     private SpringSwaggerConfig springSwaggerConfig;
     public static void main( String[] args )
     {
-        SpringApplication.run(App.class, args);
+    SpringApplication.run(App.class, args);
 
-    }
+}
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

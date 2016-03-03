@@ -7,7 +7,7 @@
 package com.wpj.wx.serviceimpl;
 
 import com.github.pagehelper.PageHelper;
-import com.wpj.wx.damain.TbMenuitem;
+import com.wpj.wx.daomain.TbMenuitem;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.MenuItemService;
 import org.springframework.cache.annotation.Cacheable;

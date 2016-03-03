@@ -6,7 +6,7 @@
 
 package com.wpj.wx.serviceimpl;
 
-import com.wpj.wx.damain.TbSystemInfo;
+import com.wpj.wx.daomain.TbSystemInfo;
 import com.wpj.wx.service.SystemInfoService;
 import com.wpj.wx.service.SystemSchedulerService;
 import com.wpj.wx.util.SystemOSUtils;

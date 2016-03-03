@@ -8,8 +8,8 @@ package com.wpj.wx.serviceimpl;
 
 import com.github.pagehelper.PageHelper;
 import com.wpj.wx.dao.TbIplogsMapper;
-import com.wpj.wx.damain.PageRequest;
-import com.wpj.wx.damain.TbIplogs;
+import com.wpj.wx.daomain.PageRequest;
+import com.wpj.wx.daomain.TbIplogs;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.IpLogService;
 import org.springframework.beans.factory.annotation.Autowired;

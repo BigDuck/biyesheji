@@ -7,7 +7,7 @@
 package com.wpj.wx.exception;
 
 import com.wpj.wx.controller.common.BaseController;
-import com.wpj.wx.damain.BaseResult;
+import com.wpj.wx.daomain.BaseResult;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -6,7 +6,7 @@
 
 package com.wpj.wx.serviceimpl;
 
-import com.wpj.wx.damain.TbSubmenuitem;
+import com.wpj.wx.daomain.TbSubmenuitem;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.SubMenuItemService;
 import org.springframework.cache.annotation.Cacheable;

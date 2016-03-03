@@ -7,8 +7,8 @@
 package com.wpj.wx.serviceimpl;
 
 import com.github.pagehelper.PageHelper;
-import com.wpj.wx.damain.PageRequest;
-import com.wpj.wx.damain.TbSystemInfo;
+import com.wpj.wx.daomain.PageRequest;
+import com.wpj.wx.daomain.TbSystemInfo;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.SystemInfoService;
 import org.springframework.cache.annotation.Cacheable;
@@ -27,7 +27,7 @@ import java.util.List;
 public class SystemInfoServiceImpl  extends BaseService<TbSystemInfo> implements SystemInfoService {
 
     @Override
-    @Cacheable(key = "#pageRequest")
+    @Cacheable(value = "myCache",key = "#pageRequest")
     public List<TbSystemInfo> selectByListmain(TbSystemInfo tbSystemInfo, PageRequest pageRequest) {
         Example example = new Example(TbSystemInfo.class);
         Example.Criteria criteria = example.createCriteria();

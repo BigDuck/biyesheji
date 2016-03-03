@@ -7,7 +7,7 @@
 package com.wpj.wx.service;
 
 
-import com.wpj.wx.damain.TbHeader;
+import com.wpj.wx.daomain.TbHeader;
 
 import java.util.List;
 import java.util.Map;

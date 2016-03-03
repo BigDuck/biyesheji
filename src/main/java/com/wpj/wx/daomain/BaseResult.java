@@ -4,7 +4,7 @@
  * @Email wpjlovehome@gmail.com
  */
 
-package com.wpj.wx.damain;
+package com.wpj.wx.daomain;
 
 import org.springframework.http.HttpStatus;
 

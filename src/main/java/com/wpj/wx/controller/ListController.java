@@ -11,7 +11,7 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.controller.common.BaseController;
-import com.wpj.wx.damain.BaseResult;
+import com.wpj.wx.daomain.BaseResult;
 import com.wpj.wx.serviceimpl.ListServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

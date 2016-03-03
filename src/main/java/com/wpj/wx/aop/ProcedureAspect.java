@@ -6,7 +6,7 @@
 
 package com.wpj.wx.aop;
 
-import com.wpj.wx.damain.TbIplogs;
+import com.wpj.wx.daomain.TbIplogs;
 import com.wpj.wx.service.IpLogService;
 import com.wpj.wx.util.StringUtils;
 import org.aspectj.lang.JoinPoint;

@@ -7,7 +7,7 @@
 package com.wpj.wx.serviceimpl;
 
 import com.wpj.wx.dao.TbSliderMapper;
-import com.wpj.wx.damain.TbSlider;
+import com.wpj.wx.daomain.TbSlider;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.SliderService;
 import org.springframework.beans.factory.annotation.Autowired;

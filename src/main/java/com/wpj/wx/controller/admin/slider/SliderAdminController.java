@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -56,8 +57,9 @@ public class SliderAdminController extends BaseController {
     @RequestMapping("/slider/upload")
     @ResponseBody
     @Procedure(description = "上传")
-    public String upload(@RequestParam(value = "file", required = false) MultipartFile file,
+    public String upload(@RequestParam(value = "upload", required = false) MultipartFile file,
                          HttpServletRequest request, ModelMap model){
+
         String fileName = FileUploadHelper.getUniqueName(file.getOriginalFilename());
         File targetFile = new File(fileUploaderConfiguration.getSliderPath(), fileName);
        File path=new File(fileUploaderConfiguration.getSliderPath());

@@ -8,7 +8,7 @@ package com.wpj.wx;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.wpj.wx.damain.TbSlidercontent;
+import com.wpj.wx.daomain.TbSlidercontent;
 import com.wpj.wx.serviceimpl.SliderContentServiceImpl;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-<div class="admin-content">
+<div class="admin-content" xmlns:form="http://www.w3.org/1999/html">
     <div class="am-cf am-padding">
         <div class="am-fl am-cf">
             <strong class="am-text-primary am-text-lg"><a href="/admin/main/list">分类</a></strong> /
@@ -10,7 +10,7 @@
         <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
         </div>
         <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
-            <form method="post" action="../admin/main/list/add" class="am-form am-form-horizontal">
+            <form method="post" action="${springMacroRequestContext.contextPath}/admin/main/list/add" class="am-form am-form-horizontal">
             ##链接
                 <div class="am-form-group">
                     <label for="link" class="am-u-sm-3 am-form-label">链接 /Link </label>
@@ -21,6 +21,7 @@
                         <small>点击分类栏跳转的栏目链接</small>
                     </div>
                 </div>
+
             ##样式
                 <div class="am-form-group">
                     <label for="className" class="am-u-sm-3 am-form-label"> 样式/Style</label>
@@ -99,7 +100,6 @@
             ##文章书写
                 <div class="am-form-group">
                     <label for="contents" class="am-u-sm-3 am-form-label">简介 / Intro</label>
-
                     <div class="am-u-sm-9">
                        <textarea name="contents" id="contents" rows="10" cols="40">
                            #if(!$listMain.contents)

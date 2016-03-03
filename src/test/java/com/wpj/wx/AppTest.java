@@ -3,7 +3,7 @@ package com.wpj.wx;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.wpj.wx.common.Page;
-import com.wpj.wx.damain.*;
+import com.wpj.wx.daomain.*;
 import com.wpj.wx.serviceimpl.*;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

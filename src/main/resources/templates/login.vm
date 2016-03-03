@@ -22,12 +22,16 @@
         .header p {
             font-size: 14px;
         }
+        #loginDiv{
+            background: -webkit-linear-gradient(45deg,#b2e2fa,blueviolet);
+        }
     </style>
 </head>
-<body>
+<body id="loginDiv">
+
 <div class="header">
     <div class="am-g">
-        <h1>后台登录</h1>
+        <h1 class="am-animation-shake">后台登录</h1>
     </div>
     <hr />
 </div>
@@ -35,16 +39,12 @@
     <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
         <h3>登录</h3>
         <br>
-
         <form method="post" action="/login" class="am-form">
-            <label for="email">邮箱:</label>
-            <input type="email" name="username" id="username" value="">
+            <label for="email" class="am-animation-slide-left">邮箱:</label>
+            <input type="email" class="am-animation-slide-right" name="username" id="username" value="">
             <br>
-            <label for="password">密码:</label>
-            <input type="password" name="password" id="password" value="">
-            <input type="hidden"
-                   name="${_csrf.parameterName}"
-                   value="${_csrf.token}"/>
+            <label for="password" class="am-animation-slide-left">密码:</label>
+            <input type="password" class="am-animation-slide-right" name="password" id="password" value="">
             <br>
             <label for="remember-me">
                 <input id="remember-me" type="checkbox">
@@ -57,8 +57,9 @@
             </div>
         </form>
         <hr>
-        <p>© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+        <p>© 2016 AllMobilize, Inc. Licensed under MIT license.</p>
     </div>
 </div>
 </body>
 </html>
+

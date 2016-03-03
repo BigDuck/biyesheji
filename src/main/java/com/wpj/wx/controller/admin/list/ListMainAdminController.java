@@ -11,12 +11,11 @@ import com.google.common.base.Strings;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.controller.common.BaseController;
-import com.wpj.wx.damain.TbList;
-import com.wpj.wx.damain.TbListmain;
+import com.wpj.wx.daomain.TbList;
+import com.wpj.wx.daomain.TbListmain;
 import com.wpj.wx.service.ListMainService;
 import com.wpj.wx.service.ListService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -46,7 +45,6 @@ public class ListMainAdminController extends BaseController {
      */
     @RequestMapping(value = "/main/list")
     @Procedure(description = "admin的菜单menu")
-    @PreAuthorize("hasAuthority('ADMIN')")
     public String menuMain(ModelMap map,
                            @RequestParam(required = false, defaultValue = "1") int page,
                            @RequestParam(required = false, defaultValue = "10") int rows

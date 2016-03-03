@@ -28,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @DirtiesContext
 @IntegrationTest("server.port:0")
-@SpringApplicationConfiguration(App.class)
+@SpringApplicationConfiguration(classes = App.class)
 @Transactional("transactionManager")
 public class BaseTest {
 }

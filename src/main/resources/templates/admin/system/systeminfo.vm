@@ -14,6 +14,9 @@
                 <div class="am-form-group">
                     <button class="am-btn am-btn-default am-animation-shake" type="submit">搜索</button>
                 </div>
+                <input type="hidden"
+                       name="${_csrf.parameterName}"
+                       value="${_csrf.token}"/>
             </form>
         </div>
         <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
@@ -95,7 +98,7 @@ $(function(){
        $.ajax({
            url:"../manager/detail",
            dataType:'json',
-           data:{"id":id},
+           data:{"id":id,'${_csrf.parameterName}':'${_csrf.token}'},
            type: "POST",
            success:function(datas){
                var contents="<article class='am-article'>id:"+id+"详情";

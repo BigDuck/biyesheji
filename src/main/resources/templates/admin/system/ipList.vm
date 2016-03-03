@@ -10,16 +10,19 @@
             <form class="am-form-inline" method="post" action="${springMacroRequestContext.contextPath}/manager/iplist">
                 <div class="am-form-group">
                     开始时间
-                    <input type="text" placeholder="开始时间"  name="startTime" class="Wdate am-form-field"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+                    <input type="text" value="$!startTime" placeholder="开始时间"  name="startTime" class="Wdate am-form-field"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
                 </div>
                 <div class="am-form-group">
                     结束时间
-                    <input type="text" placeholder="结束时间"  name="endTime" class="Wdate am-form-field"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+                    <input type="text" value="$!endTime" placeholder="结束时间"  name="endTime" class="Wdate am-form-field"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
                 </div>
                 <div class="am-form-group">
                     <button class="am-btn am-btn-default am-animation-fade" type="submit">搜索</button>
                     <button class="am-btn am-btn-danger am-animation-shake" type="reset">重置</button>
                 </div>
+                <input type="hidden"
+                       name="${_csrf.parameterName}"
+                       value="${_csrf.token}"/>
             </form>
         </div>
         <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
@@ -67,7 +70,7 @@
                 </li>
                 #if($iplist.hasPreviousPage)
                     <li class="am-pagination-prev ">
-                        <a href="${springMacroRequestContext.contextPath}/manager/iplist?page=$math.sub($iplist.pageNum,1)" >上一页</a>
+                        <a href="${springMacroRequestContext.contextPath}/manager/iplist?page=$iplist.prePage" >上一页</a>
                     </li>
                 #end
 

@@ -11,11 +11,12 @@ import com.mangofactory.swagger.annotations.ApiIgnore;
 import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.common.Config;
 import com.wpj.wx.controller.common.BaseController;
-import com.wpj.wx.damain.PageRequest;
-import com.wpj.wx.damain.TbIplogs;
-import com.wpj.wx.damain.TbSystemInfo;
+import com.wpj.wx.daomain.PageRequest;
+import com.wpj.wx.daomain.TbIplogs;
+import com.wpj.wx.daomain.TbSystemInfo;
 import com.wpj.wx.service.IpLogService;
 import com.wpj.wx.service.SystemInfoService;
+import com.wpj.wx.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -56,6 +57,12 @@ public class ManagerController extends BaseController {
         map.addAttribute("iplist", new PageInfo<>(iplist));
         map.addAttribute("page", pageRequest.getPage());
         map.addAttribute("rows", pageRequest.getRows());
+        if (pageRequest.getStartTime() != null) {
+            map.addAttribute("startTime", DateUtil.date2Str(pageRequest.getStartTime()));
+        }
+        if(pageRequest.getEndTime()!=null){
+            map.addAttribute("endTime",DateUtil.date2Str(pageRequest.getEndTime()));
+        }
         map.addAttribute("MyTemplate", "admin/system/ipList.vm");
         return Config.INDEX;
     }
@@ -85,9 +92,9 @@ public class ManagerController extends BaseController {
         MyLogeer.info("id{}", id);
         TbSystemInfo tbSystemInfo = null;
         try {
-            tbSystemInfo  =systemInfoService.selectByKey(id);
-        }catch (Exception e){
-            MyLogeer.error("获取详情失败{}",e.getCause());
+            tbSystemInfo = systemInfoService.selectByKey(id);
+        } catch (Exception e) {
+            MyLogeer.error("获取详情失败{}", e.getCause());
         }
         return tbSystemInfo;
     }

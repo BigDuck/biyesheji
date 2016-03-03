@@ -6,7 +6,7 @@
 
 package com.wpj.wx.serviceimpl;
 
-import com.wpj.wx.damain.TbSlidercontent;
+import com.wpj.wx.daomain.TbSlidercontent;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.SliderContentService;
 import org.springframework.stereotype.Service;

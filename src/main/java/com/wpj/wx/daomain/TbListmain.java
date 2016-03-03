@@ -1,4 +1,4 @@
-package com.wpj.wx.damain;
+package com.wpj.wx.daomain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -17,19 +17,15 @@ public class TbListmain extends BaseDamain {
     private Integer id;
     @Column(name = "link")
     private String link;
-
     @Column(name = "class_name")
     private String className;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date date;
     @Column(name = "`desc`")
     private String desc;
-
     private String img;
-
     @Column(name = "thumb_addition")
     private String thumbAddition;
-
     @Column(name = "main_addition")
     private String mainAddition;
     @Column(name = "list_id")

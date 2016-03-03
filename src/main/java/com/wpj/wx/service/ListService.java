@@ -6,7 +6,7 @@
 
 package com.wpj.wx.service;
 
-import com.wpj.wx.damain.TbList;
+import com.wpj.wx.daomain.TbList;
 
 import java.util.List;
 

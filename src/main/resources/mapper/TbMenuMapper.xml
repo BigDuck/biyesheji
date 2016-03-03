@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wpj.wx.dao.TbMenuMapper">
-    <resultMap id="BaseResultMap" type="com.wpj.wx.damain.TbMenu">
+    <resultMap id="BaseResultMap" type="com.wpj.wx.daomain.TbMenu">
         <!--
           WARNING - @mbggenerated
         -->
@@ -14,14 +14,14 @@
         <result column="html_id" property="id" jdbcType="VARCHAR" />
     </resultMap>
 
-    <resultMap id="AllMenuMessageMap" type="com.wpj.wx.damain.TbMenu" extends="BaseResultMap">
-        <collection property="content" ofType="com.wpj.wx.damain.TbMenuitem" column="munue_id">
+    <resultMap id="AllMenuMessageMap" type="com.wpj.wx.daomain.TbMenu" extends="BaseResultMap">
+        <collection property="content" ofType="com.wpj.wx.daomain.TbMenuitem" column="munue_id">
             <id column="menuItem_id" property="menuitemId" jdbcType="INTEGER" />
             <result column="Link" property="link" jdbcType="VARCHAR" />
             <result column="Menu_id" property="menuId" jdbcType="INTEGER" />
             <result column="title" property="title" jdbcType="VARCHAR" />
             <result column="subCols" property="subCols" jdbcType="INTEGER" />
-            <collection property="subMenu" ofType="com.wpj.wx.damain.TbSubmenuitem" column="menuItem_id">
+            <collection property="subMenu" ofType="com.wpj.wx.daomain.TbSubmenuitem" column="menuItem_id">
                 <id column="Sub_id" property="subId" jdbcType="INTEGER" />
                 <result column="Sub_link" property="link" jdbcType="VARCHAR" />
                 <result column="Sub_title" property="title" jdbcType="VARCHAR" />

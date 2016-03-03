@@ -9,7 +9,7 @@ package com.wpj.wx.controller.admin;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.controller.common.BaseController;
-import com.wpj.wx.damain.TbHeader;
+import com.wpj.wx.daomain.TbHeader;
 import com.wpj.wx.serviceimpl.HeaderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

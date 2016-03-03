@@ -6,8 +6,8 @@
 
 package com.wpj.wx.service;
 
-import com.wpj.wx.damain.PageRequest;
-import com.wpj.wx.damain.TbSystemInfo;
+import com.wpj.wx.daomain.PageRequest;
+import com.wpj.wx.daomain.TbSystemInfo;
 
 import java.util.List;
 

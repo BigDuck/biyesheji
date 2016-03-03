@@ -7,7 +7,7 @@
 package com.wpj.wx.serviceimpl;
 
 import com.wpj.wx.dao.SUserMapper;
-import com.wpj.wx.damain.SUser;
+import com.wpj.wx.daomain.SUser;
 import com.wpj.wx.service.BaseService;
 import com.wpj.wx.service.SUserService;
 import org.springframework.beans.factory.annotation.Autowired;
