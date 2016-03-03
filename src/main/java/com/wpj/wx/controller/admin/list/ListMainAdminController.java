@@ -63,6 +63,7 @@ public class ListMainAdminController extends BaseController {
     }
 
     @RequestMapping(value = "/main/list/{flag}/search")
+    @Procedure(description = "搜索list详情")
     public String searchList(ModelMap map, @PathVariable("flag") String flag
     ) {
 
@@ -101,7 +102,7 @@ public class ListMainAdminController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/main/list/add",method = RequestMethod.POST)
-  //  @Procedure(description = "添加listMain")
+     @Procedure(description = "添加listMain")
     public String listMainAdd(HttpServletRequest request){
       //  MyLogeer.info("--result---{}",tbListmain.toString());
         TbListmain tbListmain=new TbListmain();

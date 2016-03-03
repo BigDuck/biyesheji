@@ -39,6 +39,7 @@ public class CountController extends BaseController {
     @Autowired
     RemoteService remoteService;
     @RequestMapping(value = "/count",method = RequestMethod.GET)
+    @Procedure(description = "访问运维统计")
     public Object toCount(ModelMap map){
         // 当未选择时间的时候现实最近7天
         map.addAttribute("MyTemplate", "admin/count/count.vm");
@@ -46,7 +47,7 @@ public class CountController extends BaseController {
     }
     @RequestMapping(value = "/count/getCount",method = RequestMethod.POST)
     @ResponseBody
-    @Procedure(description = "访问运维统计")
+    @Procedure(description = "获取运维统计数据")
     public Object getCount(HttpServletRequest request){
         Date startTime=DateUtil.getYesterday(new Date(),true,7);
         Date endTime=new Date();

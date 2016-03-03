@@ -49,6 +49,7 @@ public class SliderAdminController extends BaseController {
         return Config.INDEX;
     }
     @RequestMapping(value = {"/slider/add"})
+    @Procedure(description = "添加轮播")
     public String addSlider(ModelMap map){
         MyLogeer.info("添加了");
         map.addAttribute("MyTemplate","admin/module/slider/sliderAdd.vm");

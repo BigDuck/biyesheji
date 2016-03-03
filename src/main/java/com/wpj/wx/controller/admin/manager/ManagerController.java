@@ -76,6 +76,7 @@ public class ManagerController extends BaseController {
     }
 
     @RequestMapping("/system")
+    @Procedure(description = "获取系统信息列表")
     public Object getSystemInfo(ModelMap map, PageRequest pageRequest) {
         List<TbSystemInfo> systemInfos = systemInfoService.selectByListmain(new TbSystemInfo(), pageRequest);
         map.addAttribute("systemInfos", new PageInfo<>(systemInfos));

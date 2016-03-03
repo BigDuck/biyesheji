@@ -24,8 +24,5 @@ public class IndexController {
     public Object index(){
     return "index";
     }
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
-    public Object login(){
-        return "login";
-    }
+
 }

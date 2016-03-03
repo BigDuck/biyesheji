@@ -19,8 +19,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,6 +34,8 @@ import java.util.UUID;
 @Component
 @Aspect
 public class ProcedureAspect {
+@Autowired
+private	HttpServletResponse response;
 private Logger logger= LoggerFactory.getLogger(ProcedureAspect.class);
 	@Autowired
 	IpLogService ipLogService;
@@ -39,10 +44,19 @@ private Logger logger= LoggerFactory.getLogger(ProcedureAspect.class);
 	public void targetMethods() {}
 	
 	@Before("@annotation(com.wpj.wx.aop.Procedure)")
-	public void preHandle(JoinPoint joinPoint) {
+	public void preHandle(JoinPoint joinPoint) throws IOException {
+
 		logger.info("info:----------------------------------------------------------->before");
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 		HttpSession session = request.getSession();
+
+		if(session.getAttribute("role")==null){
+			System.out.println(request.getContextPath());
+			response.sendRedirect(request.getContextPath() + "/login");
+
+		}
+
+
 		//读取session中的用户
 	//	logger.info("name---------->"+ SecurityTools.getUserName());
 		//请求的IP
@@ -62,7 +76,6 @@ private Logger logger= LoggerFactory.getLogger(ProcedureAspect.class);
 			}
 			logger.info("参数:{}",o);
 		}
-
 
 		try {
 			tbIplogs.setParams(joinPoint.getSignature().getName() + "()"+params.toString()+getControllerMethodDescription(joinPoint));
