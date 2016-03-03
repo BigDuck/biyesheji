@@ -8,10 +8,7 @@ package com.wpj.wx;
 
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.ConfigFileApplicationContextInitializer;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -24,11 +21,12 @@ import org.springframework.transaction.annotation.Transactional;
  * author：WPJ587
  * description：测试的基类
  **/
-@WebIntegrationTest(randomPort = true)
 @RunWith(SpringJUnit4ClassRunner.class)
-@DirtiesContext
-@IntegrationTest("server.port:0")
-@SpringApplicationConfiguration(classes = App.class)
+@WebAppConfiguration
+@ContextConfiguration(classes = App.class,
+        initializers = ConfigFileApplicationContextInitializer.class)
+@WebIntegrationTest({"server.port=0", "management.port=0"})
+@TransactionConfiguration(defaultRollback = true)
 @Transactional("transactionManager")
 public class BaseTest {
 }

@@ -12,7 +12,7 @@ import com.wordnik.swagger.annotations.ApiParam;
 import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.daomain.BaseResult;
-import com.wpj.wx.serviceimpl.HeaderServiceImpl;
+import com.wpj.wx.serviceImpl.HeaderServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

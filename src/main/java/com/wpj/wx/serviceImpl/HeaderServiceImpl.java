@@ -1,13 +1,12 @@
 /*
- * Copyright (c) 2015 - 10 - 13  10 : 34 :$second
+ * Copyright (c) 2016 - 3 - 3  2 : 29 :12
  * @author wupeiji It will be
  * @Email wpjlovehome@gmail.com
  */
 
-package com.wpj.wx.serviceimpl;
+package com.wpj.wx.serviceImpl;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 import com.wpj.wx.dao.TbHeaderMapper;
 import com.wpj.wx.daomain.TbHeader;
 import com.wpj.wx.service.BaseService;

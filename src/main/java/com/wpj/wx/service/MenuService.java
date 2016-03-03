@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 - 10 - 13  3 : 27 :$second
+ * Copyright (c) 2016 - 3 - 3  2 : 26 :42
  * @author wupeiji It will be
  * @Email wpjlovehome@gmail.com
  */
@@ -15,5 +15,5 @@ import java.util.List;
  */
 public interface MenuService extends IService<TbMenu> {
     TbMenu findAllMenuMessageById(int menuId);
-    List<TbMenu> getMenuByPage(TbMenu tbMenu,int page, int rows);
+    List<TbMenu> getMenuByPage(TbMenu tbMenu, int page, int rows);
 }

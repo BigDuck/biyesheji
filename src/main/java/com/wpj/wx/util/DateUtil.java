@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 - 2 - 23  3 : 56 :45
+ * Copyright (c) 2016 - 3 - 3  2 : 23 :34
  * @author wupeiji It will be
  * @Email wpjlovehome@gmail.com
  */
@@ -328,9 +328,9 @@ public class DateUtil {
      * @return
      */
     public static Date year(Date date, int year) {
-        java.util.Calendar Cal = java.util.Calendar.getInstance();
+        Calendar Cal = Calendar.getInstance();
         Cal.setTime(date);
-        Cal.add(java.util.Calendar.YEAR, year);
+        Cal.add(Calendar.YEAR, year);
         return Cal.getTime();
     }
 

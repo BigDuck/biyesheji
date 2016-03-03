@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 - 1 - 21  10 : 14 :4
+ * Copyright (c) 2016 - 3 - 3  2 : 33 :24
  * @author wupeiji It will be
  * @Email wpjlovehome@gmail.com
  */
@@ -215,13 +215,13 @@ public class WebTools {
     {
         String htmlStr = inputString; // 含HTML标签的字符串
         String textStr = "";
-        java.util.regex.Pattern p_script;
+        Pattern p_script;
         java.util.regex.Matcher m_script;
-        java.util.regex.Pattern p_style;
+        Pattern p_style;
         java.util.regex.Matcher m_style;
-        java.util.regex.Pattern p_html;
+        Pattern p_html;
         java.util.regex.Matcher m_html;
-        java.util.regex.Pattern p_ba;
+        Pattern p_ba;
         java.util.regex.Matcher m_ba;
 
         try

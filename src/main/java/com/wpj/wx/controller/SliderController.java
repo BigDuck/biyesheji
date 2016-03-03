@@ -13,7 +13,7 @@ import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.daomain.BaseResult;
 import com.wpj.wx.daomain.TbSlider;
-import com.wpj.wx.serviceimpl.SliderServiceImpl;
+import com.wpj.wx.service.SliderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +28,7 @@ import java.util.Map;
 @Api(basePath = "/sliders", value = "TbSlider", description = "轮播")
 public class SliderController extends BaseController {
     @Autowired
-    private SliderServiceImpl sliderService;
+    private SliderService sliderService;
 
     /**
      * Gets slider.

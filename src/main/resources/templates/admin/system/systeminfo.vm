@@ -14,9 +14,7 @@
                 <div class="am-form-group">
                     <button class="am-btn am-btn-default am-animation-shake" type="submit">搜索</button>
                 </div>
-                <input type="hidden"
-                       name="${_csrf.parameterName}"
-                       value="${_csrf.token}"/>
+
             </form>
         </div>
         <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />

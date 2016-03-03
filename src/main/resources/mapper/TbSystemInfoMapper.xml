@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wpj.wx.dao.TbSystemInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.wpj.wx.daomain.TbSystemInfo" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="osname" property="osname" jdbcType="VARCHAR" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="hostname" property="hostname" jdbcType="VARCHAR" />
+    <result column="cpunumber" property="cpunumber" jdbcType="BIGINT" />
+    <result column="cpuratio" property="cpuratio" jdbcType="DECIMAL" />
+    <result column="phymemory" property="phymemory" jdbcType="BIGINT" />
+    <result column="phyfreememory" property="phyfreememory" jdbcType="BIGINT" />
+    <result column="diskmemory" property="diskmemory" jdbcType="VARCHAR" />
+    <result column="jvmtotalmemory" property="jvmtotalmemory" jdbcType="BIGINT" />
+    <result column="jvmfreememory" property="jvmfreememory" jdbcType="BIGINT" />
+    <result column="jvmmaxmemory" property="jvmmaxmemory" jdbcType="BIGINT" />
+    <result column="gccount" property="gccount" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>

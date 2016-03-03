@@ -12,7 +12,7 @@ import com.wordnik.swagger.annotations.ApiParam;
 import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.daomain.BaseResult;
-import com.wpj.wx.serviceimpl.ListServiceImpl;
+import com.wpj.wx.service.ListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +29,7 @@ import java.util.Map;
 @Api(basePath = "/lists", value = "TbList", description = "列表相关")
 public class ListController extends BaseController {
     @Autowired
-    ListServiceImpl listService;
+    ListService listService;
     @RequestMapping("/list/{id}")
     @ApiOperation(value = "获取列表信息", httpMethod = "GET", notes = "根据列表id获取列表的信息",response = BaseResult.class)
     @Procedure(description = "访问获列表取信息")

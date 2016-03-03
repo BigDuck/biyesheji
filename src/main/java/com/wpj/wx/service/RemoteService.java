@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 - 2 - 23  9 : 12 :3
+ * Copyright (c) 2016 - 3 - 3  2 : 26 :42
  * @author wupeiji It will be
  * @Email wpjlovehome@gmail.com
  */
@@ -26,7 +26,7 @@ public interface RemoteService extends IService<TbRemote> {
      * @param ipAddress ip地址
      * @return
      */
-    List<TbRemote> findRemotebList(Date startTime,Date endTime,String ipAddress);
+    List<TbRemote> findRemotebList(Date startTime, Date endTime, String ipAddress);
 
     /**
      * 转换为echart
@@ -36,5 +36,5 @@ public interface RemoteService extends IService<TbRemote> {
      * @param ip 如果是按照ip查询的话传入ip
      * @return
      */
-    String toEchartData(List<TbRemote> remotes,Date startTime,Date endTime,String ip);
+    String toEchartData(List<TbRemote> remotes, Date startTime, Date endTime, String ip);
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wpj.wx.dao.TbRemoteMapper">
+    <resultMap id="BaseResultMap" type="com.wpj.wx.daomain.TbRemote">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="remote_ip" property="remoteIp" jdbcType="VARCHAR"/>
+        <result column="remote_count" property="remoteCount" jdbcType="BIGINT"/>
+        <result column="remote_date" property="remoteDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="getTbRemote" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select
+    <if test="isIP==true">
+        remote_count ,
+    </if>
+    <if test="isIP==null">
+        count(*) AS   remote_count,
+    </if>
+    remote_ip,
+    remote_date
+    from tb_remote as tbm
+    <where>
+        <if test="startTime!=null and endTime!=null">
+            tbm.remote_date BETWEEN #{startTime,jdbcType=DATE} AND #{endTime,javaType=DATE}
+        </if>
+        <if test="ipAddress!=null">
+        AND tbm.remote_ip=#{ipAddress,javaType=STRING}
+        </if>
+    </where>
+        <if test="isIP==true">
+            group by tbm.remote_date
+        </if>
+        <if test="isIP==null">
+            group by tbm.remote_ip
+        </if>
+
+  </select>
+
+</mapper>

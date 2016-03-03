@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 - 12 - 17  11 : 14 :40
+ * Copyright (c) 2016 - 3 - 3  2 : 52 :54
  * @author wupeiji It will be
  * @Email wpjlovehome@gmail.com
  */
@@ -15,11 +15,13 @@ import com.wpj.wx.daomain.TbList;
 import com.wpj.wx.daomain.TbListmain;
 import com.wpj.wx.service.ListMainService;
 import com.wpj.wx.service.ListService;
+import com.wpj.wx.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -89,20 +91,51 @@ public class ListMainAdminController extends BaseController {
 
            map.addAttribute("MyTemplate", "admin/module/list/listMainDetail.vm");
        }
-        System.out.println("---wpjlovehome@gmail.com-----值=" + "你好" + "," + "类名=ListMainController.detailPage()");
 
         return "admin/index";
     }
 
     /**
      * 保存listMain
-     * @param tbListmain 前台传来的实体
+     * @param
      * @return
      */
     @RequestMapping(value = "/main/list/add",method = RequestMethod.POST)
-    @Procedure(description = "添加listMain")
-    public String listMainAdd(@ModelAttribute("tbListmain")TbListmain tbListmain){
-        MyLogeer.info("--result---{}",tbListmain.toString());
+  //  @Procedure(description = "添加listMain")
+    public String listMainAdd(HttpServletRequest request){
+      //  MyLogeer.info("--result---{}",tbListmain.toString());
+        TbListmain tbListmain=new TbListmain();
+        if(request.getParameter("link")!=null){
+            tbListmain.setLink(request.getParameter("link").toString());
+        }
+        if(request.getParameter("className")!=null){
+            tbListmain.setClassName(request.getParameter("className").toString());
+
+        } if(request.getParameter("title")!=null){
+            tbListmain.setTitle(request.getParameter("title").toString());
+
+
+        } if(request.getParameter("listId")!=null){
+            tbListmain.setListId(Integer.valueOf(request.getParameter("listId").toString()));
+        } if(request.getParameter("desc")!=null){
+            tbListmain.setDesc(request.getParameter("desc").toString());
+
+        } if(request.getParameter("date")!=null){
+            tbListmain.setDate(DateUtil.str2Date(request.getParameter("date")));
+            System.out.println(request.getParameter("date"));
+
+        } if(request.getParameter("img")!=null){
+            tbListmain.setImg(request.getParameter("img").toString());
+
+        } if(request.getParameter("thumbAddition")!=null){
+            tbListmain.setThumbAddition(request.getParameter("thumbAddition").toString());
+
+        } if(request.getAttribute("mainAddition")!=null){
+            tbListmain.setMainAddition(request.getParameter("mainAddition").toString());
+
+        } if(request.getParameter("contents")!=null){
+            tbListmain.setContents(request.getParameter("contents").toString());
+        }
         int result= listMainService.save(tbListmain);
         MyLogeer.info("保存结果{}",result);
 

@@ -13,7 +13,7 @@ import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.daomain.BaseResult;
 import com.wpj.wx.daomain.TbMenu;
-import com.wpj.wx.serviceimpl.MenuServiceImpl;
+import com.wpj.wx.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +30,7 @@ import java.util.Map;
 @Api(basePath = "/menus", value = "TbMenu", description = "菜单")
 public class MenuController extends BaseController {
     @Autowired
-    private MenuServiceImpl menuService;
+    private MenuService menuService;
 
     /**
      * Gets menu by id.

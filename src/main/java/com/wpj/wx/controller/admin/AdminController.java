@@ -10,7 +10,7 @@ import com.mangofactory.swagger.annotations.ApiIgnore;
 import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.controller.common.BaseController;
 import com.wpj.wx.daomain.TbHeader;
-import com.wpj.wx.serviceimpl.HeaderServiceImpl;
+import com.wpj.wx.service.HeaderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @ApiIgnore
 public class AdminController extends BaseController {
     @Autowired
-    HeaderServiceImpl headerService;
+    HeaderService headerService;
     @RequestMapping(value = {"/main/header","/main"},method = RequestMethod.GET)
     @Procedure(description = "访问网站header操作")
     public String test (ModelMap map){

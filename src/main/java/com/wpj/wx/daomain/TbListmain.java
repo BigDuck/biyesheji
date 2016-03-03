@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2016 - 3 - 3  2 : 19 :18
+ * @author wupeiji It will be
+ * @Email wpjlovehome@gmail.com
+ */
+
 package com.wpj.wx.daomain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -5,8 +11,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.wpj.wx.util.MyDateSerializer;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
 import javax.persistence.*;
+import java.util.Date;
 
 @Table(name = "tb_listmain")
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)//自动忽略空字段

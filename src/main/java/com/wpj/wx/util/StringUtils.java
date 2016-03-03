@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 - 11 - 1  4 : 27 :57
+ * Copyright (c) 2016 - 3 - 3  2 : 23 :34
  * @author wupeiji It will be
  * @Email wpjlovehome@gmail.com
  */
@@ -7,14 +7,10 @@ package com.wpj.wx.util;
 
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringEscapeUtils;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.servlet.LocaleResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

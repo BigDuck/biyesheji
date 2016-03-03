@@ -20,9 +20,7 @@
                     <button class="am-btn am-btn-default am-animation-fade" type="submit">搜索</button>
                     <button class="am-btn am-btn-danger am-animation-shake" type="reset">重置</button>
                 </div>
-                <input type="hidden"
-                       name="${_csrf.parameterName}"
-                       value="${_csrf.token}"/>
+
             </form>
         </div>
         <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />

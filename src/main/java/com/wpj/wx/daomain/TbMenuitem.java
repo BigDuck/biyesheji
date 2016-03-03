@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 - 10 - 14  9 : 53 :35
+ * Copyright (c) 2016 - 3 - 3  2 : 19 :18
  * @author wupeiji It will be
  * @Email wpjlovehome@gmail.com
  */
@@ -9,7 +9,10 @@ package com.wpj.wx.daomain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.List;
 
 @Table(name = "tb_menuitem")

@@ -1,15 +1,12 @@
 
 
 /*
- * Copyright (c) 2015 - 12 - 21  11 : 40 :2
+ * Copyright (c) 2016 - 3 - 3  2 : 23 :34
  * @author wupeiji It will be
  * @Email wpjlovehome@gmail.com
  */
 
 package com.wpj.wx.util;
-
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Bean;
 
 /**
  * 用来读取存放上（application）传文件的路径

@@ -6,9 +6,9 @@
 
 package com.wpj.wx.aop;
 
+import com.google.common.base.Strings;
 import com.wpj.wx.daomain.TbIplogs;
 import com.wpj.wx.service.IpLogService;
-import com.wpj.wx.util.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -25,32 +25,19 @@ import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 
-/**
- * The type Procedure aspect.
- */
 @Component
 @Aspect
 public class ProcedureAspect {
 private Logger logger= LoggerFactory.getLogger(ProcedureAspect.class);
-	/**
-	 * The Ip log service.
-	 */
 	@Autowired
 	IpLogService ipLogService;
 
-	/**
-	 * Target methods.
-	 */
 	@Pointcut("execution(* com.wpj.wx.aop.*.*(..)) ")
 	public void targetMethods() {}
-
-	/**
-	 * Pre handle.
-	 *
-	 * @param joinPoint the join point
-	 */
+	
 	@Before("@annotation(com.wpj.wx.aop.Procedure)")
 	public void preHandle(JoinPoint joinPoint) {
 		logger.info("info:----------------------------------------------------------->before");
@@ -70,8 +57,8 @@ private Logger logger= LoggerFactory.getLogger(ProcedureAspect.class);
 		logger.info("请求方法:" + (joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()"));
 		StringBuffer params=new StringBuffer();
 		for (Object o:joinPoint.getArgs()){
-			if(StringUtils.isNoneEmtryAndNull(o)){
-				params.append("-"+o);
+			if(!Strings.isNullOrEmpty(o+"")){
+				params.append("-"+o.toString());
 			}
 			logger.info("参数:{}",o);
 		}
@@ -87,11 +74,6 @@ private Logger logger= LoggerFactory.getLogger(ProcedureAspect.class);
 		}
 	}
 
-	/**
-	 * Post handle.
-	 *
-	 * @param retVal the ret val
-	 */
 	@AfterReturning(
 			pointcut="@annotation(com.wpj.wx.aop.Procedure)",
 			returning="retVal")
@@ -99,12 +81,6 @@ private Logger logger= LoggerFactory.getLogger(ProcedureAspect.class);
 		logger.info("Aspect :: postHandle, retVal={}");
 	}
 
-	/**
-	 * Handle object.
-	 *
-	 * @param pjp the pjp
-	 * @return the object
-	 */
 	@Around("@annotation(com.wpj.wx.aop.Procedure)")
 	public Object handle(ProceedingJoinPoint pjp) {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
@@ -117,13 +93,10 @@ private Logger logger= LoggerFactory.getLogger(ProcedureAspect.class);
 		Object[] args;
 		try {
 			args = pjp.getArgs();
-			Object obj = pjp.proceed();
-			System.out.println(obj);
 			return args == null ? pjp.proceed() : pjp.proceed(args);
 		} catch (Throwable e) {
 			logger.info("Aspect :: handleException");
 			int statusCode = 500;
-			e.printStackTrace();
 			String statusMessage = "unknown";
 			if (e instanceof ProcedureException) {
 				statusCode = ((ProcedureException) e).getStatusCode();
@@ -138,13 +111,11 @@ private Logger logger= LoggerFactory.getLogger(ProcedureAspect.class);
 			logger.info("Aspect :: around - end");
 		}
 	}
-
 	/**
 	 * 获取注解中对方法的描述信息 用于Controller层注解
-	 *
 	 * @param joinPoint 切点
-	 * @return 方法描述 controller method description
-	 * @throws Exception the exception
+	 * @return 方法描述
+	 * @throws Exception
 	 */
 	public  static String getControllerMethodDescription(JoinPoint joinPoint)  throws Exception {
 		String targetName = joinPoint.getTarget().getClass().getName();

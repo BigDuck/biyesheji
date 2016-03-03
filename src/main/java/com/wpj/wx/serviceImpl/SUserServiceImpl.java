@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016 - 2 - 29  4 : 41 :6
+ * Copyright (c) 2016 - 3 - 3  2 : 29 :12
  * @author wupeiji It will be
  * @Email wpjlovehome@gmail.com
  */
 
-package com.wpj.wx.serviceimpl;
+package com.wpj.wx.serviceImpl;
 
 import com.wpj.wx.dao.SUserMapper;
 import com.wpj.wx.daomain.SUser;

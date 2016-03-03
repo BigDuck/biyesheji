@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2015 - 10 - 17  5 : 19 :26
+ * Copyright (c) 2016 - 3 - 3  2 : 29 :12
  * @author wupeiji It will be
  * @Email wpjlovehome@gmail.com
  */
 
-package com.wpj.wx.serviceimpl;
+package com.wpj.wx.serviceImpl;
 
 import com.wpj.wx.dao.TbSliderMapper;
 import com.wpj.wx.daomain.TbSlider;

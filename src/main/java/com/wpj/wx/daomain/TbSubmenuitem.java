@@ -1,9 +1,17 @@
+/*
+ * Copyright (c) 2016 - 3 - 3  2 : 19 :18
+ * @author wupeiji It will be
+ * @Email wpjlovehome@gmail.com
+ */
+
 package com.wpj.wx.daomain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Table(name = "tb_submenuitem")
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)//自动忽略空字段

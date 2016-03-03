@@ -8,8 +8,12 @@ package com.wpj.wx;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.wpj.wx.daomain.TbListmain;
+import com.wpj.wx.daomain.TbSlider;
 import com.wpj.wx.daomain.TbSlidercontent;
-import com.wpj.wx.serviceimpl.SliderContentServiceImpl;
+import com.wpj.wx.service.SliderContentService;
+import com.wpj.wx.serviceImpl.SliderContentServiceImpl;
+import com.wpj.wx.serviceImpl.SliderServiceImpl;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.entity.Example;
