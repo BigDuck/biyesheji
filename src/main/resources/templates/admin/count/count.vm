@@ -61,7 +61,6 @@
                     'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
                     'echarts/chart/line'
                 ],
-
                 function (ec) {
                     // 基于准备好的dom，初始化echarts图表
                     var myChart = ec.init(document.getElementById('main'));
@@ -74,8 +73,7 @@
                         data: {
                             "startTime": $("#startTime").val(),
                             "endTime": $("#endTime").val(),
-                            "ipAddress": $("#ipAddress").val(),'${_csrf.parameterName}'
-                    :'${_csrf.token}'
+                            "ipAddress": $("#ipAddress").val()
                 },
                     type: "POST",
                     success:function (datas) {

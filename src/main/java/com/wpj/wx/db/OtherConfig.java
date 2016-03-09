@@ -22,7 +22,6 @@ public class OtherConfig {
      * 我也不知道为什么。
      * @return
      */
-
     @Bean
     public MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer=new MapperScannerConfigurer();

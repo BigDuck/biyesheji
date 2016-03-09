@@ -41,7 +41,6 @@ public class BaseController {
         tbRemote.setRemoteCount(1L);
         remoteService.save(tbRemote);
         MyLogeer.info("访问记录:{}",tbRemote.toString());
-
         if (callbackParam == null) {
             return object;
         } else {

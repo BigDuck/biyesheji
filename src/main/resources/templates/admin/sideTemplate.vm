@@ -1,7 +1,7 @@
 <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
     <div class="am-offcanvas-bar admin-offcanvas-bar">
         <ul class="am-list admin-sidebar-list">
-            <li><a href="admin-index.html"><span class="am-icon-home"></span> 首页</a></li>
+            <li><a href="/"><span class="am-icon-home"></span>接口</a></li>
             <li class="admin-parent">
                 <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span> 信息维护
                     <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
@@ -15,7 +15,6 @@
                             class="am-icon-th"></span>消息维护(List)</a></li>
                     <li><a href="${springMacroRequestContext.contextPath}/admin/slider/"><span
                             class="am-icon-calendar"></span> 轮播设置(slider)</a></li>
-                    <li><a href="admin-404.html"><span class="am-icon-bug"></span> 其他</a></li>
                 </ul>
             </li>
             <li>
@@ -25,11 +24,9 @@
                 <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-yw">
                     <li><a href="${springMacroRequestContext.contextPath}/admin/count"> <span
                             class="am-icon-line-chart"></span>调用统计</a></li>
-                    <li><a href="#">IP统计</a></li>
                 </ul>
 
             </li>
-            <li><a href="admin-form.html"><span class="am-icon-pencil-square-o"></span> 表单</a></li>
             <li><a href="javascript:void(0)" onclick="logout()"><span class="am-icon-sign-out"></span> 注销</a></li>
             <li class="admin-parent">
                 <a class="am-cf" data-am-collapse="{target: '#system-nav'}"><span class="am-icon-cog"></span> 系统管理 <span
@@ -39,10 +36,6 @@
                             class="am-icon-server"></span>系统日志</a></li>
                     <li><a class="am-cf" href="${springMacroRequestContext.contextPath}/manager/system"/><span
                             class="am-icon-area-chart"></span>系统信息</a></li>
-                    <li><a href="${springMacroRequestContext.contextPath}/admins/adviceList/"><span
-                            class="am-icon-comments-o"></span> 意见和建议</a></li>
-                    <li><a href="${springMacroRequestContext.contextPath}/admins/linkList/"><span
-                            class="am-icon-link"></span> 友情链接</a></li>
                 </ul>
             </li>
         </ul>
@@ -59,7 +52,7 @@
             <div class="am-panel-bd">
                 <p><span class="am-icon-tag"></span> wiki</p>
 
-                <p>Welcome to the Amaze UI wiki!</p>
+                <p>Welcome to the wupj's design!</p>
             </div>
         </div>
     </div>

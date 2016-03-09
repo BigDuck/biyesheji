@@ -152,13 +152,46 @@ public class ListMainAdminController extends BaseController {
 
     /**
      * 更新
-     * @param tbListmain
+     * @param request
      * @return
      *@history  WPJ587 2016/1/20 0:01
      */
     @RequestMapping(value = "/main/list/update",method = RequestMethod.POST)
     @Procedure(description = "更新了Listmain")
-    public String updateListMain(@ModelAttribute("tbListmain")TbListmain tbListmain){
+    public String updateListMain(HttpServletRequest request){
+        TbListmain tbListmain=new TbListmain();
+        if(request.getParameter("link")!=null){
+            tbListmain.setLink(request.getParameter("link").toString());
+        }
+        if(request.getParameter("className")!=null){
+            tbListmain.setClassName(request.getParameter("className").toString());
+
+        } if(request.getParameter("title")!=null){
+            tbListmain.setTitle(request.getParameter("title").toString());
+        } if(request.getParameter("listId")!=null){
+            tbListmain.setListId(Integer.valueOf(request.getParameter("listId").toString()));
+        } if(request.getParameter("desc")!=null){
+            tbListmain.setDesc(request.getParameter("desc").toString());
+
+        } if(request.getParameter("date")!=null){
+            tbListmain.setDate(DateUtil.str2Date(request.getParameter("date")));
+            System.out.println(request.getParameter("date"));
+
+        } if(request.getParameter("img")!=null){
+            tbListmain.setImg(request.getParameter("img").toString());
+
+        } if(request.getParameter("thumbAddition")!=null){
+            tbListmain.setThumbAddition(request.getParameter("thumbAddition").toString());
+
+        } if(request.getAttribute("mainAddition")!=null){
+            tbListmain.setMainAddition(request.getParameter("mainAddition").toString());
+
+        } if(request.getParameter("contents")!=null){
+            tbListmain.setContents(request.getParameter("contents").toString());
+        }if (request.getParameter("id")!=null){
+            tbListmain.setId(Integer.valueOf(request.getParameter("id")));
+
+        }
        MyLogeer.info("待更新的实体:{}",tbListmain);
         try{
          int res=  listMainService.updateNotNull(tbListmain);

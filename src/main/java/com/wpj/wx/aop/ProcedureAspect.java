@@ -6,9 +6,9 @@
 
 package com.wpj.wx.aop;
 
-import com.google.common.base.Strings;
 import com.wpj.wx.daomain.TbIplogs;
 import com.wpj.wx.service.IpLogService;
+import com.wpj.wx.util.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -19,7 +19,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -49,11 +48,10 @@ private Logger logger= LoggerFactory.getLogger(ProcedureAspect.class);
 		logger.info("info:----------------------------------------------------------->before");
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 		HttpSession session = request.getSession();
-
-		if(session.getAttribute("role")==null){
+		System.out.println("请求url:"+request.getRequestURI()+session.getAttribute("role"));
+		if(session.getAttribute("role")==null&&request.getRequestURI().contains("/admin")){
 			System.out.println(request.getContextPath());
 			response.sendRedirect(request.getContextPath() + "/login");
-
 		}
 
 
@@ -71,7 +69,7 @@ private Logger logger= LoggerFactory.getLogger(ProcedureAspect.class);
 		logger.info("请求方法:" + (joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()"));
 		StringBuffer params=new StringBuffer();
 		for (Object o:joinPoint.getArgs()){
-			if(!Strings.isNullOrEmpty(o+"")){
+			if(StringUtils.isNoneEmtryAndNull(o)){
 				params.append("-"+o.toString());
 			}
 			logger.info("参数:{}",o);
@@ -98,7 +96,7 @@ private Logger logger= LoggerFactory.getLogger(ProcedureAspect.class);
 	public Object handle(ProceedingJoinPoint pjp) {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
 				.getRequestAttributes()).getRequest();
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss E");
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
 		Calendar ca = Calendar.getInstance();
 		String operDate = df.format(ca.getTime());
 		logger.info(operDate+"------------");

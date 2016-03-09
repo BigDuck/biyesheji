@@ -25,11 +25,11 @@ public class TbListmain extends BaseDamain {
     private String link;
     @Column(name = "class_name")
     private String className;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
     private Date date;
     @Column(name = "`desc`")
     private String desc;
-    private String img;
+    private String img="#";
     @Column(name = "thumb_addition")
     private String thumbAddition;
     @Column(name = "main_addition")
@@ -201,4 +201,9 @@ public class TbListmain extends BaseDamain {
     public void setContents(String contents) {
         this.contents = contents;
     }
+
+
+    public TbListmain() {
+    }
+
 }

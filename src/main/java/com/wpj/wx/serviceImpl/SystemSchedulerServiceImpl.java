@@ -31,7 +31,6 @@ public class SystemSchedulerServiceImpl implements SystemSchedulerService {
     @Autowired
     SystemInfoService systemInfoService;
 
-    //    @Scheduled(cron = "0/5 * *  * * ? ")
     @Scheduled(fixedRate = 1000 * 60*60*24 )//24小时检测一次
     @Override
     public void writeSystemInfo() {

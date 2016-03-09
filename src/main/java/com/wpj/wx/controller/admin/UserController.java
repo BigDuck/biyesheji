@@ -6,6 +6,7 @@
 
 package com.wpj.wx.controller.admin;
 
+import com.wpj.wx.aop.Procedure;
 import com.wpj.wx.common.Config;
 import com.wpj.wx.daomain.SRole;
 import com.wpj.wx.daomain.SUser;
@@ -24,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,7 +35,7 @@ import java.util.List;
  * description：登录相关控制器
  **/
 @Controller
-public class LoginController {
+public class UserController {
     @Autowired
     SUserService sUserService;
     @Autowired
@@ -53,6 +55,7 @@ public class LoginController {
 
     ) throws IOException {
         SUser sUser = sUserService.login(username, MD5Utils.encode(password).toUpperCase());
+
         if (sUser == null) {
             response.sendRedirect(request.getContextPath() + "/login");
             return null;
@@ -60,8 +63,11 @@ public class LoginController {
             SRole sRole = new SRole();
             sRole.setUid(sUser.getId());
             List<SRole> sRoleList = sRoleService.findByUser(sRole);
+            sUser.setDob(new Date());
+            sUserService.updateNotNull(sUser);
             if (sRoleList != null && sRoleList.size() > 0) {
                 session.setAttribute("role", sRoleList.get(0).getName().toLowerCase());
+                session.setAttribute("user",sUser);
             }
             try {
                 request.getRequestDispatcher("/admin/menu").forward(request, response);
@@ -73,7 +79,7 @@ public class LoginController {
         return null;
     }
 
-    @RequestMapping("/logout")
+    @RequestMapping(value = "/logout",method = RequestMethod.POST)
     public Object logout(HttpSession session,
                          HttpServletResponse response,
                          HttpServletRequest request) throws IOException {
@@ -81,4 +87,16 @@ public class LoginController {
         response.sendRedirect(request.getContextPath() + "/login");
         return null;
     }
+    @Procedure(description = "访问用户信息")
+    @RequestMapping("/admin/user/tomsg")
+    public Object toUsrMsg(ModelMap map,HttpSession session){
+        map.addAttribute("user",session.getAttribute("user"));
+        return "admin/user/usermsg";
+    }
+    @Procedure(description = "获取用户信息")
+    @RequestMapping("/user/msg")
+    public Object getUserMsg(HttpSession session){
+        return session.getAttribute("user");
+    }
+
 }

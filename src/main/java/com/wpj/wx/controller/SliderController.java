@@ -31,13 +31,13 @@ public class SliderController extends BaseController {
     private SliderService sliderService;
 
     /**
-     * Gets slider.
+     * 获取轮播信息
      *
-     * @param id            the id
-     * @param callbackparam the callbackparam
-     * @return the slider
+     * @param id            轮播id号
+     * @param callbackparam 若为跨域请求则需要次参数
+     * @return 轮播的json数据
      */
-    @RequestMapping("/slider/{id}")
+    @RequestMapping(value = "/slider/{id}",produces={"application/xml","application/json"})
     @ResponseBody
     @ApiOperation(value = "获取轮播信息", httpMethod = "GET", notes = "根据轮播id获取轮播的信息", response = BaseResult.class)
     @Procedure(description = "获取轮播信息")
